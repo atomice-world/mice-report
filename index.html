@@ -1,235 +1,184 @@
 <!DOCTYPE html>
-<html lang="ko"><head>
-<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>7월 30일 MICE 및 PCO업계 소식 리포트</title>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>7월 31일 MICE 및 PCO업계 소식 리포트</title>
 <style>
-  * { margin:0; padding:0; box-sizing:border-box; }
-  body { font-family:'Malgun Gothic','맑은 고딕',system-ui,sans-serif; background:#eef2f7; color:#1f2933; line-height:1.6; padding:24px; }
-  .wrap { max-width:960px; margin:0 auto; }
-  header.rpt { background:linear-gradient(135deg,#1a3a6b,#2c5aa0); color:#fff; border-radius:14px; padding:24px 28px; margin-bottom:20px; display:grid; grid-template-columns:1fr 360px; gap:24px; align-items:center; }
-  header.rpt .kicker { font-size:13px; letter-spacing:2px; opacity:.85; }
-  header.rpt h1 { font-size:23px; margin:6px 0 4px; }
-  header.rpt .date { font-size:13.5px; opacity:.9; }
-  .cal { background:#ffffff; border-radius:10px; padding:12px 14px; box-shadow:0 4px 14px rgba(0,0,0,.18); }
-  .cal .cal-h { display:flex; justify-content:space-between; align-items:baseline; margin-bottom:8px; }
-  .cal .cal-h b { font-size:15px; color:#1a3a6b; } .cal .cal-h span { font-size:11px; color:#ef9f27; font-weight:600; }
-  table.cal-g { width:100%; border-collapse:separate; border-spacing:2px; }
-  table.cal-g th { font-size:10.5px; color:#8a97a4; padding:2px 0; font-weight:600; }
-  table.cal-g th:first-child { color:#d85a30; } table.cal-g th:last-child { color:#2c5aa0; }
-  table.cal-g td { height:30px; text-align:center; font-size:12px; vertical-align:middle; position:relative; color:#3c4a59; border-radius:6px; }
-  table.cal-g td.sun { color:#d85a30; } table.cal-g td.sat { color:#2c5aa0; }
-  table.cal-g td.ev { font-weight:700; color:#854f0b; background:#faeeda; }
-  table.cal-g td.ev::after { content:''; position:absolute; left:50%; bottom:3px; transform:translateX(-50%); width:5px; height:5px; border-radius:50%; background:#ef9f27; }
-  table.cal-g td.today { background:#1a3a6b; color:#fff; font-weight:700; box-shadow:0 0 0 2px #ffd24a; }
-  table.cal-g td.today::after { background:#ffd24a; }
-  table.cal-g td.range { box-shadow:inset 0 0 0 1.5px #f0c98a; }
-  table.cal-g td.range.today { box-shadow:0 0 0 2px #ffd24a; }
-  .cal-legend { margin-top:10px; padding-top:8px; border-top:1px solid #eef2f7; font-size:11px; line-height:1.6; color:#5c6b7a; }
-  .cal-legend div { white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
-  .cal-legend .d { display:inline-block; width:6px; height:6px; border-radius:50%; background:#ef9f27; margin-right:5px; vertical-align:middle; }
-  .cal-legend .b { display:inline-block; width:7px; height:7px; border-radius:2px; background:#faeeda; border:1px solid #f0c98a; margin-right:5px; vertical-align:middle; }
-  section.card { background:#fff; border-radius:12px; padding:20px 24px; margin-bottom:16px; box-shadow:0 2px 10px rgba(0,0,0,.05); }
-  section.card h2 { font-size:18px; color:#1a3a6b; border-left:5px solid #2c5aa0; padding-left:12px; margin-bottom:12px; }
-  .assoc { font-size:15px; font-weight:700; margin:14px 0 6px; display:flex; align-items:center; gap:8px; }
-  .assoc .tag { font-size:12px; font-weight:600; color:#fff; background:#2c5aa0; padding:2px 10px; border-radius:6px; }
-  .assoc .tag.kma { background:#0f6e56; }
-  .kw { font-size:14px; font-weight:700; margin:12px 0 6px; display:flex; align-items:center; gap:8px; }
-  .kw .chip { font-size:12px; font-weight:600; color:#854f0b; background:#faeeda; padding:2px 10px; border-radius:20px; } .kw .cnt { font-size:12px; color:#8a97a4; font-weight:400; }
-  .grp { font-size:14px; font-weight:700; margin:12px 0 6px; display:flex; align-items:center; gap:8px; }
-  .grp .chip { font-size:12px; font-weight:600; color:#0c447c; background:#e6f1fb; padding:2px 10px; border-radius:20px; }
-  .sub { font-size:13px; color:#5c6b7a; margin:10px 0 6px; }
-  .summary { list-style:none; } .summary li { margin:8px 0; padding-left:4px; } .summary li::before { content:'▪'; color:#2c5aa0; margin-right:10px; }
-  .item { padding:8px 0; border-bottom:1px solid #eef2f7; font-size:15px; } .item:last-child { border-bottom:none; }
-  .item a { color:#1a3a6b; text-decoration:none; border-bottom:1px solid transparent; } .item a:hover { border-bottom-color:#2c5aa0; color:#2c5aa0; }
-  .item a::after { content:'\2197'; font-size:11px; color:#8a97a4; margin-left:3px; vertical-align:1px; }
-  .badge { display:inline-block; background:#e8effa; color:#1a3a6b; font-size:12px; font-weight:600; padding:2px 9px; border-radius:20px; margin-right:8px; } .badge.kma { background:#e1f2ec; color:#0f6e56; } .badge.kmice { background:#e6f1fb; color:#0c447c; }
-  .media,.src { color:#8a97a4; font-size:13px; } .org { color:#2c5aa0; font-weight:600; } .org.kma { color:#0f6e56; }
-  .note { font-size:12px; color:#8a97a4; margin-top:10px; }
-  .venue-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(230px,1fr)); gap:14px; }
-  .venue { background:#f7f9fc; border-radius:10px; padding:14px 16px; border:1px solid #e6ecf3; } .venue h3 { font-size:15px; color:#1a3a6b; margin-bottom:6px; } .venue p { font-size:13.5px; color:#3c4a59; }
-  footer.rpt { text-align:center; font-size:12px; color:#8a97a4; margin-top:18px; }
-  @media(max-width:720px){ header.rpt{grid-template-columns:1fr;} }
-</style></head><body><div class="wrap">
-  <header class="rpt">
+  :root{--navy:#1a3a6b;--amber:#ffce6a;--amber2:#ffd97a;--teal:#0f766e;--coral:#e26d5c;--ink:#1f2733;--sub:#5b6675;--line:#e6e9ef;--bg:#f4f6fa;}
+  *{box-sizing:border-box;}
+  body{margin:0;background:var(--bg);color:var(--ink);font-family:'Malgun Gothic','Apple SD Gothic Neo',sans-serif;line-height:1.6;}
+  .wrap{max-width:940px;margin:0 auto;padding:0 16px 60px;}
+  header{background:var(--navy);border-radius:0 0 14px 14px;overflow:hidden;box-shadow:0 6px 18px rgba(26,58,107,.18);}
+  .amberbar{height:7px;background:var(--amber);}
+  .hd{display:flex;justify-content:space-between;align-items:center;gap:20px;padding:22px 26px;flex-wrap:wrap;}
+  .hd .eyebrow{color:var(--amber2);font-size:13px;letter-spacing:2px;font-weight:700;margin:0 0 4px;}
+  .hd h1{color:#fff;font-size:25px;margin:0;font-weight:800;}
+  .hd .date{color:var(--amber2);font-weight:700;font-size:14px;margin-top:6px;}
+  /* calendar widget */
+  .cal{background:#fff;border-radius:10px;padding:10px 12px;min-width:238px;}
+  .cal .caltitle{font-size:13px;font-weight:800;color:var(--navy);text-align:center;margin-bottom:6px;}
+  .cal table{border-collapse:collapse;width:100%;}
+  .cal th{font-size:11px;color:var(--sub);padding:2px;font-weight:700;}
+  .cal td{font-size:11.5px;text-align:center;padding:3px 2px;color:var(--ink);width:14.28%;}
+  .cal td.sun{color:#d64545;}
+  .cal td.today{background:var(--navy);color:#fff;border-radius:50%;font-weight:800;}
+  section{background:#fff;border-radius:12px;padding:20px 24px;margin-top:18px;box-shadow:0 2px 8px rgba(20,30,50,.05);}
+  h2{font-size:18px;margin:0 0 12px;color:var(--navy);border-left:5px solid var(--amber);padding-left:10px;display:flex;align-items:center;gap:8px;}
+  h2 .num{background:var(--navy);color:#fff;border-radius:6px;font-size:12px;padding:2px 8px;font-weight:800;}
+  h3{font-size:14px;color:var(--teal);margin:16px 0 6px;}
+  .sum{background:#fbfcfe;border:1px solid var(--line);border-radius:10px;padding:14px 18px;}
+  .sum ul{margin:6px 0 0;padding-left:18px;}
+  .sum li{margin:4px 0;}
+  ul.news{list-style:none;padding:0;margin:0;}
+  ul.news li{padding:9px 0;border-bottom:1px solid var(--line);}
+  ul.news li:last-child{border-bottom:none;}
+  ul.news a{color:var(--ink);text-decoration:none;font-weight:600;}
+  ul.news a:hover{color:var(--teal);text-decoration:underline;}
+  .meta{font-size:12px;color:var(--sub);margin-left:6px;}
+  .kw{display:inline-block;background:#eef2fb;color:var(--navy);font-size:11px;font-weight:700;border-radius:5px;padding:1px 7px;margin-right:6px;}
+  table.dt{border-collapse:collapse;width:100%;font-size:13px;margin-top:8px;}
+  table.dt th{background:var(--navy);color:#fff;padding:8px 10px;text-align:left;font-size:12px;}
+  table.dt td{border-bottom:1px solid var(--line);padding:8px 10px;vertical-align:top;}
+  .note{background:#fff8ec;border:1px solid #f3dca0;border-radius:8px;padding:12px 16px;font-size:13px;color:#8a6d2f;margin-top:8px;}
+  .plist{margin:6px 0 0;padding-left:18px;}
+  .plist li{margin:5px 0;}
+  a.seeall{color:var(--teal);font-weight:700;text-decoration:none;font-size:13px;}
+  a.seeall:hover{text-decoration:underline;}
+  footer{text-align:center;color:var(--sub);font-size:12px;margin-top:26px;}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+  <div class="amberbar"></div>
+  <div class="hd">
     <div>
-      <div class="kicker">MICE · PCO DAILY BRIEF</div>
-      <h1>7월 30일 MICE 및 PCO업계 소식 리포트</h1>
-      <div class="date">기준일: 2026년 7월 30일 (목) · 자료: 한국PCO협회, 한국MICE협회, 컨벤션센터, 뉴스 클리핑, K-MICE</div>
+      <p class="eyebrow">ATOMICE · MICE·PCO DAILY BRIEF</p>
+      <h1>7월 31일 MICE 및 PCO업계 소식 리포트</h1>
+      <div class="date">기준일 : 2026년 7월 31일 (금)</div>
     </div>
     <div class="cal">
-      <div class="cal-h"><b>2026.07 MICE 캘린더</b><span>K-MICE · 주요 14건</span></div>
-      <table class="cal-g"><thead><tr><th>일</th><th>월</th><th>화</th><th>수</th><th>목</th><th>금</th><th>토</th></tr></thead>
-      <tbody>
-        <tr><td></td><td></td><td></td><td class="ev">1</td><td class="ev">2</td><td>3</td><td class="sat ev">4</td></tr>
-        <tr><td class="sun ev">5</td><td class="ev">6</td><td class="ev">7</td><td class="ev">8</td><td>9</td><td>10</td><td class="sat">11</td></tr>
-        <tr><td class="sun ev">12</td><td>13</td><td class="ev">14</td><td>15</td><td>16</td><td>17</td><td class="sat">18</td></tr>
-        <tr><td class="sun ev range">19</td><td class="ev range">20</td><td class="ev range">21</td><td class="ev range">22</td><td class="range">23</td><td class="range">24</td><td class="sat range">25</td></tr>
-        <tr><td class="sun range">26</td><td class="ev range">27</td><td class="range">28</td><td class="range">29</td><td class="today">30</td><td>31</td><td></td></tr>
-      </tbody></table>
-      <div class="cal-legend">
-        <div><span class="b"></span>07.19 유네스코 세계유산위 총회 (~07.29, 부산)</div>
-        <div><span class="d"></span>07.02 퀀텀코리아 · 07.06 국제기계학습(ICML)</div>
-        <div><span class="d"></span>07.22 국제소롭티미스트 세계대회 · 07.27 DH2026</div>
-      </div>
+      <div class="caltitle">2026년 7월</div>
+      <table>
+        <tr><th class="sun">일</th><th>월</th><th>화</th><th>수</th><th>목</th><th>금</th><th>토</th></tr>
+        <tr><td></td><td></td><td></td><td>1</td><td>2</td><td>3</td><td>4</td></tr>
+        <tr><td class="sun">5</td><td>6</td><td>7</td><td>8</td><td>9</td><td>10</td><td>11</td></tr>
+        <tr><td class="sun">12</td><td>13</td><td>14</td><td>15</td><td>16</td><td>17</td><td>18</td></tr>
+        <tr><td class="sun">19</td><td>20</td><td>21</td><td>22</td><td>23</td><td>24</td><td>25</td></tr>
+        <tr><td class="sun">26</td><td>27</td><td>28</td><td>29</td><td>30</td><td class="today">31</td><td></td></tr>
+      </table>
     </div>
-  </header>
-
-  <section class="card"><h2>① 오늘의 요약</h2><ul class="summary">
-    <li>하나금융, <b>잠실 스포츠·MICE 복합공간 4조원 규모 PF 금융주관</b> 본궤도 — 국내 최대 MICE 개발사업 자금조달 탄력 (07.30)</li>
-    <li>정부, 상반기 방한객 <b>1,071만 명</b> 집계… 연 <b>3,000만 외래객</b> 유치 전략 수립 착수 (문체부·업계 간담, 07.30)</li>
-    <li><b>제48차 유네스코 세계유산위원회 총회</b>, 부산 BEXCO서 7.19~29 <b>11일간</b> 개최 — 이달 최대 국제행사</li>
-    <li>서울, 국제회의 <b>216건 개최</b>로 ICCA 기준 <b>세계 3위·아시아 1위</b> 수성, 한국 국가순위 세계 2위</li>
-    <li>한국PCO협회, <b>2026 국제회의용역 표준계약서 발주기관 교육</b> 개최 안내 — 공정 계약환경 확산 (공지 07.24)</li>
-  </ul></section>
-
-  <section class="card"><h2>② 협회 공지 · 업계소식</h2>
-    <div class="assoc"><span class="tag">한국PCO협회</span> KAPCO</div>
-    <div class="sub">협회 공지</div>
-    <div class="item"><span class="org">[한국PCO협회]</span> 2026 국제회의용역 표준계약서 발주기관 교육 개최 안내 <span class="src">· 2026-07-24</span></div>
-    <div class="item"><span class="org">[한국PCO협회]</span> 2026 MICE분야 공정거래 컨설팅 지원 안내 <span class="src">· 2026-02-02</span></div>
-    <div class="item"><span class="org">[한국PCO협회]</span> 2026 컨벤션산업 지식재산(IP) 보호 및 관리 컨설팅 참여기업 모집 <span class="src">· 2026-06-08</span></div>
-    <div class="item"><span class="org">[국가데이터처]</span> MICE산업 특수분류 제정 고시(제2025-223호) <span class="src">· 2025-12-31</span></div>
-    <div class="sub">업계소식 (외부기관 공유)</div>
-    <div class="item"><span class="org">[한국마이스관광학회]</span> 2026 MICE 정책포럼 개최 안내 (8/21) <span class="src">· 2026-07-30</span></div>
-    <div class="item"><span class="org">[인천관광공사]</span> 2026 인천 컨벤션 유치 및 개최지원 정기공고(2차) <span class="src">· 2026-07-06</span></div>
-    <div class="item"><span class="org">[한국전시산업진흥회]</span> 2026 전시산업 대학생 경진대회 개최 안내 <span class="src">· 2026-07-02</span></div>
-    <div class="item"><span class="org">[한국PCO협회]</span> 공정성 확보를 위한 지방계약법 개선 토론회 개최 <span class="src">· 2026-06-23</span></div>
-
-    <div class="assoc"><span class="tag kma">한국MICE협회</span> KMA</div>
-    <div class="sub">협회 공지</div>
-    <div class="item"><span class="org kma">[한국MICE협회]</span> 인크루트 MICE 기업 전문관 오픈 안내 <span class="src">· 2026-07-21</span></div>
-    <div class="item"><span class="org kma">[한국MICE협회]</span> 정부 정책 발표를 사칭한 이메일(악성코드) 주의 안내 <span class="src">· 2026-07-15</span></div>
-    <div class="item"><span class="org kma">[한국MICE협회]</span> '데이터로 읽는 오프라인 경험의 가치' 교육 개최(7/29) <span class="src">· 2026-07-15</span></div>
-    <div class="item"><span class="org kma">[한국MICE협회]</span> 2026년 하반기 관광진흥개발기금 융자 시행 안내 <span class="src">· 2026-06-30</span></div>
-    <div class="sub">보도자료</div>
-    <div class="item"><span class="org kma">[보도자료]</span> (사)한국MICE협회, '2026 영마이스 리더 프로젝트' 교육 성료 <span class="src">· 2026-07-16</span></div>
-    <div class="item"><span class="org kma">[보도자료]</span> 한국MICE협회-인크루트, 'MICE 기업 전문관' 개설… 채용 활성화 <span class="src">· 2026-06-30</span></div>
-  </section>
-
-  <section class="card"><h2>③ 회원사 소식</h2>
-    <div class="item"><span class="badge">코엑스(이사사)</span> 7월 다수 전시·국제회의 진행, 부산 유네스코 세계유산위 총회 등 하반기 대형행사 지원 준비 <span class="src">· 2026-07</span></div>
-    <div class="item"><span class="badge">한국마이스관광학회</span> 2026 MICE 정책포럼(8/21) 개최 — AI·마이스테크 주제, 업계 참여 모집 <span class="src">· 2026-07-30</span></div>
-    <div class="item"><span class="badge">KAPCO 이사사·정회원</span> 협회 주관 '지방계약법 개선 토론회'·표준계약서 발주기관 교육에 회원사 참여 확대 <span class="src">· 2026-06~07</span></div>
-    <div class="note">※ 최근 30일간 개별 회원사 단독 보도는 제한적. 확인된 공개 출처(협회 공지·뉴스) 기준으로 정리했으며, 세부 소식은 각 사 채널 확인 권장.</div>
-  </section>
-
-  <section class="card"><h2>④ 컨벤션센터 소식</h2><div class="venue-grid">
-    <div class="venue"><h3>BEXCO (부산)</h3><p>제48차 유네스코 세계유산위원회 총회 7.19~29 개최(11일간 대형 국제회의). 부산 브랜드 페스타 2026·PET&amp;MORE 반려동물 박람회 7.10~12 동시 개최.</p></div>
-    <div class="venue"><h3>잠실 스포츠·MICE (서울)</h3><p>하나금융, 4조원 규모 PF 금융주관 확정 — 국내 최대 MICE 복합개발 자금조달 본궤도 (07.30).</p></div>
-    <div class="venue"><h3>COEX (서울)</h3><p>7월 전시·국제회의 일정 정상 운영. 하반기 KOREA MICE EXPO 2026 등 대형행사 준비.</p></div>
-    <div class="venue"><h3>KINTEX (고양)</h3><p>7월 중순~말 전시·세미나 다수 진행. 제2·제3전시장 연계 대형 박람회 라인업 운영.</p></div>
   </div>
-  <div class="note">※ 센터별 세부 일정은 각 센터 공식 행사일정 페이지 기준. 검색·공식 스케줄 병행 확인.</div>
-  </section>
+</header>
 
-  <section class="card"><h2>⑤ 뉴스 클리핑</h2>
-    <div class="kw"><span class="chip">MICE</span> <span class="cnt">3건</span></div>
-    <div class="item"><a href="http://v.daum.net/v/20260730094410491" target="_blank" rel="noopener">하나금융, 잠실 스포츠·MICE 개발 4조원 PF 금융주관</a> <span class="media">· 2026-07-30</span></div>
-    <div class="item"><a href="http://v.daum.net/v/20260730094328449" target="_blank" rel="noopener">상반기 방한객 1071만명…정부, 3000만 외래객 전략 짠다</a> <span class="media">· 2026-07-30</span></div>
-    <div class="item"><a href="http://v.daum.net/v/20260701060405942" target="_blank" rel="noopener">마이스 강국 韓, 국제회의 개최 '세계 2위'… 서울은 아시아 1위</a> <span class="media">· 2026-07-01</span></div>
+<!-- ① 요약 -->
+<section>
+  <h2><span class="num">①</span> 오늘의 요약</h2>
+  <div class="sum">
+    <strong>핵심 3줄</strong>
+    <ul>
+      <li>정부·지자체發 대형 MICE 인프라 투자가 이어짐 — 하나금융그룹이 <b>잠실 스포츠·마이스(MICE) 복합공간에 4조원 규모 PF</b>를 주관, 경주시는 글로벌 마이스컨벤션도시 부문 <b>4년 연속 수상</b>.</li>
+      <li>협회 동향 — 한국PCO협회가 <b>2026 국제회의용역 표준계약서 발주기관 교육</b>(7/24), <b>신규 MICE 행사 아이디어 공모전 지역연계</b>(7/30) 공지. 한국마이스관광학회 <b>2026 MICE 정책포럼(8/21)</b> 개최 예정.</li>
+      <li>학회·지자체 얼라이언스 활동 활발 — 마이스관광학회 <b>AI·마이스테크 정책포럼</b>, 군산시 <b>마이스 얼라이언스 위촉</b> 등 민관 협력 확대.</li>
+    </ul>
+  </div>
+  <div class="note">⚠ 데이터 수집 안내 : KBID(⑦ 회원사 낙찰현황·⑧ 사전규격·⑨ 입찰정보)는 <b>로그인이 필요한 유료 서비스</b>로, 이번 자동 실행 시점에 로그인 세션이 없어 수집하지 못했습니다. 한국MICE협회(KMA)·K-MICE 게시판은 스크립트 지연 렌더링으로 목록 추출에 제한이 있었습니다. 해당 섹션은 로그인 세션 확보 후 재실행하면 정상 수집됩니다.</div>
+</section>
 
-    <div class="kw"><span class="chip">마이스</span> <span class="cnt">3건</span></div>
-    <div class="item"><a href="http://v.daum.net/v/20260730101710298" target="_blank" rel="noopener">하나금융, 잠실 스포츠·마이스 개발 4조원 PF 주관…'One IB' 시너지</a> <span class="media">· 2026-07-30</span></div>
-    <div class="item"><a href="http://v.daum.net/v/20260724151102242" target="_blank" rel="noopener">군산시, 마이스 얼라이언스 위촉…"민관 공조 신성장"</a> <span class="media">· 2026-07-24</span></div>
-    <div class="item"><a href="http://v.daum.net/v/20260729060337469" target="_blank" rel="noopener">한국마이스관광학회, AI·마이스테크 주제 정책 포럼 외</a> <span class="media">· 2026-07-29</span></div>
+<!-- ② 협회 -->
+<section>
+  <h2><span class="num">②</span> 협회 소식 (PCO · MICE)</h2>
+  <h3>한국PCO협회(KAPCO) — 공지사항</h3>
+  <ul class="news">
+    <li><a href="https://www.kapco.or.kr/news/noticeList.php" target="_blank">[한국마이스관광학회] 2026 MICE 정책포럼 개최 안내 (8/21 개최)</a><span class="meta">2026-07-30</span></li>
+    <li><a href="https://www.kapco.or.kr/news/noticeList.php" target="_blank">[한국PCO협회] 2026년 신규 MICE 행사 아이디어 공모전 지역 연계 안내</a><span class="meta">2026-07-30</span></li>
+    <li><a href="https://www.kapco.or.kr/news/noticeList.php" target="_blank">[한국PCO협회] 2026 국제회의용역 표준계약서 발주기관 교육 개최 안내</a><span class="meta">2026-07-24</span></li>
+    <li><a href="https://www.kapco.or.kr/news/noticeList.php" target="_blank">[인천관광공사] 2026 인천 컨벤션 유치 및 개최지원 정기공고(2차)</a><span class="meta">2026-07-06</span></li>
+    <li><a href="https://www.kapco.or.kr/news/noticeList.php" target="_blank">[충북문화재단] 2026 충북 MICE 프로페셔널 아카데미 참가자 모집</a><span class="meta">2026-07-07</span></li>
+    <li><a href="https://www.kapco.or.kr/news/noticeList.php" target="_blank">[한국전시산업진흥회] 2026 전시산업 대학생 경진대회 개최 안내</a><span class="meta">2026-07-02</span></li>
+  </ul>
+  <h3>한국PCO협회(KAPCO) — 업계소식</h3>
+  <ul class="news">
+    <li><a href="https://www.kapco.or.kr/news/newsList.php" target="_blank">마이스 강국 韓, 국제회의 개최 '세계 2위'… 서울은 '아시아 1위'</a><span class="meta">2026-07-13</span></li>
+  </ul>
+  <h3>한국MICE협회(KMA)</h3>
+  <div class="note">KMA 공지·보도자료 게시판은 목록이 스크립트로 지연 로딩되어 이번 실행에서 항목을 추출하지 못했습니다. (micekorea.or.kr)</div>
+</section>
 
-    <div class="kw"><span class="chip">PCO</span> <span class="cnt">2건</span></div>
-    <div class="item"><a href="http://v.daum.net/v/20260702174025074" target="_blank" rel="noopener">강릉 찾아가는 관광·MICE 설명회 성료</a> <span class="media">· 2026-07-02</span></div>
-    <div class="item"><a href="http://v.daum.net/v/20260730094727666" target="_blank" rel="noopener">"K 미식으로 세계유산 품어" 롯데호텔, 유네스코 부산 행사 성공 지원</a> <span class="media">· 2026-07-30</span></div>
+<!-- ③ 회원사 -->
+<section>
+  <h2><span class="num">③</span> 회원사 소식</h2>
+  <ul class="news">
+    <li><a href="https://www.kapco.or.kr/news/newsList.php" target="_blank">한국PCO협회·본타이거, AI 활용 역량 강화 협력</a><span class="meta">2026-06-29</span></li>
+    <li><a href="https://www.kapco.or.kr/news/newsList.php" target="_blank">코엑스, 2029년 전후 '새단장'…英 헤더윅스튜디오 설계</a><span class="meta">참고</span></li>
+  </ul>
+  <div class="note">이번 실행에서 이사사·정회원 51개사 개별 소식 페이지는 별도 수집하지 않았습니다. (기준 명단 51개사)</div>
+</section>
 
-    <div class="kw"><span class="chip">컨벤션</span> <span class="cnt">2건</span></div>
-    <div class="item"><a href="http://v.daum.net/v/20260730102054526" target="_blank" rel="noopener">경남도, 국제관광 투자유치 설명회 9월 개최</a> <span class="media">· 2026-07-30</span></div>
-    <div class="item"><a href="http://v.daum.net/v/20260730102958073" target="_blank" rel="noopener">외래객 3000만 명 시대 앞당긴다…문체부·여행업계 머리 맞대</a> <span class="media">· 2026-07-30</span></div>
+<!-- ④ 컨벤션센터 -->
+<section>
+  <h2><span class="num">④</span> 컨벤션센터 동향</h2>
+  <ul class="news">
+    <li><a href="http://v.daum.net/v/20260731070012155" target="_blank">코엑스 마곡 컨벤션센터 — '반다이남코 펀 엑스포 2026' 개최(~8/2), 오픈런 성황</a><span class="meta">2026-07-31</span></li>
+    <li><a href="http://v.daum.net/v/20260731050317906" target="_blank">잠실 종합운동장 일대 전시·컨벤션시설(스포츠·MICE 복합) 4조원 PF 추진</a><span class="meta">2026-07-31</span></li>
+    <li><a href="http://v.daum.net/v/20260731045740723" target="_blank">경주 화백컨벤션센터(HICO) 중심 국제회의 인프라 강화 — 도시 경쟁력 수상</a><span class="meta">2026-07-31</span></li>
+  </ul>
+</section>
 
-    <div class="note">※ 수집 방식: 네이버 뉴스 직접 접근이 차단(안전 제한)되어 <b>다음(Daum) 뉴스 검색(최신순)</b>으로 대체 수집했습니다. 키워드 4종 중복 제거 후 총 10건. 헤드라인 클릭 시 원문 기사로 연결됩니다.</div>
-  </section>
+<!-- ⑤ 뉴스 클리핑 -->
+<section>
+  <h2><span class="num">⑤</span> 뉴스 클리핑 (키워드 4종 · 최근)</h2>
+  <p class="meta">출처 : Daum 뉴스검색(최신순). 네이버 자동수집 차단으로 Daum 포털을 1차 사용. 헤드라인 클릭 시 기사 원문으로 이동.</p>
+  <h3><span class="kw">MICE</span> 3건</h3>
+  <ul class="news">
+    <li><a href="http://v.daum.net/v/20260731050317906" target="_blank">하나금융, 잠실 스포츠·마이스(MICE) 복합공간 4조 규모 PF 추진</a><span class="meta">2026-07-31 · 세계일보</span></li>
+    <li><a href="http://v.daum.net/v/20260731045740723" target="_blank">경주시, 글로벌 MICE 경쟁력 입증…'한국의 최고 경영대상' 4년 연속 수상</a><span class="meta">2026-07-31 · 투어코리아</span></li>
+    <li><a href="http://v.daum.net/v/20260730204709775" target="_blank">거창군, 온천테마파크에 MICE 포함 체류형 관광명소 조성</a><span class="meta">2026-07-30</span></li>
+  </ul>
+  <h3><span class="kw">마이스</span> 1건</h3>
+  <ul class="news">
+    <li><a href="http://v.daum.net/v/20260730204650763" target="_blank">앨리슨 양 메리어트 중화권 부사장 "방중 열풍, 한국손님 더 특별하게"(인터뷰)</a><span class="meta">2026-07-30</span></li>
+  </ul>
+  <h3><span class="kw">PCO</span> 2건</h3>
+  <ul class="news">
+    <li><a href="http://v.daum.net/v/20260729060337469" target="_blank">한국마이스관광학회, AI·마이스테크 주제 정책 포럼 개최</a><span class="meta">2026-07-29 · 이데일리</span></li>
+    <li><a href="http://v.daum.net/v/20260724151102242" target="_blank">군산시, 마이스 얼라이언스 위촉…"민관 공조 신성장"</a><span class="meta">2026-07-24</span></li>
+  </ul>
+  <h3><span class="kw">컨벤션</span> 2건</h3>
+  <ul class="news">
+    <li><a href="http://v.daum.net/v/20260731070012155" target="_blank">코엑스 마곡 컨벤션센터 '반다이남코 펀 엑스포 2026' 참관 성황</a><span class="meta">2026-07-31 · 이투데이</span></li>
+    <li><a href="http://v.daum.net/v/20260731020642966" target="_blank">하이원리조트 컨벤션센터 '2026 아시아모델페스티벌 뷰티페스타' 개최</a><span class="meta">2026-07-26 · bnt뉴스</span></li>
+  </ul>
+</section>
 
-  <section class="card"><h2>⑥ 서울관광공사 K-MICE</h2>
-    <div class="grp"><span class="chip">MICE 소식</span></div>
-    <div class="item"><span class="badge kmice">공지</span> 인천관광공사, 「2026 컨벤션 유치 및 개최지원 정기2차」 모집 공고 <span class="src">· 2026-07-09</span></div>
-    <div class="item"><span class="badge kmice">공지</span> 「2026 글로벌 K-컨벤션 육성 사업」 신규 국제회의 선정 결과 공지 <span class="src">· 2026-05-04</span></div>
-    <div class="grp"><span class="chip">MICE 카드뉴스</span></div>
-    <div class="item">2024년 MICE 참가자의 주요 변화와 특징</div>
-    <div class="item">MICE 산업이 지역과 산업에 남기는 유산</div>
-    <div class="grp"><span class="chip">MICE 지식마당</span></div>
-    <div class="item">APEC 2025 KOREA, 한국 MICE의 새로운 도약점이 되다</div>
-    <div class="item">2026년 대한민국 MICE 산업 트렌드 : T.O.U.C.H</div>
-    <div class="item">[현장탐방] 2025 대한민국 MICE 대상 및 컨퍼런스</div>
-    <div class="note">※ MICE 캘린더(2026.07 전체 행사)는 상단 우측 위젯으로 표시. K-MICE 메인은 Chrome get_page_text로 정상 수집.</div>
-  </section>
-  <section class="card"><h2>⑦ 회원사 나라장터 낙찰현황 <span style="font-size:13px;color:#8a97a4;font-weight:400;">(7/1~7/30 누적)</span></h2>
-    <div class="note" style="margin-top:0;margin-bottom:10px;">KAPCO 이사사·정회원 <b>51개사</b> 대상, KBID 낙찰업체 검색 기준. 이벤트 키워드(포럼·세미나·컨벤션·컨퍼런스·행사·기념식·워크숍·초청·상담회·B2B 등) 부합 <b>6건</b> (전체 용역 낙찰 15건 중). 이번 달 1일~기준일 누적.</div>
-    <table style="width:100%;border-collapse:collapse;font-size:13.5px;">
-      <thead><tr style="background:#f0f4fa;color:#1a3a6b;text-align:left;">
-        <th style="padding:8px 10px;border-bottom:2px solid #d3ddec;">수주사</th>
-        <th style="padding:8px;border-bottom:2px solid #d3ddec;">발주기관</th>
-        <th style="padding:8px;border-bottom:2px solid #d3ddec;">사업명</th>
-        <th style="padding:8px;border-bottom:2px solid #d3ddec;text-align:right;white-space:nowrap;">금액(원)</th>
-        <th style="padding:8px;border-bottom:2px solid #d3ddec;white-space:nowrap;">개찰일</th></tr></thead>
-      <tbody>
-        <tr><td style="padding:8px 10px;border-bottom:1px solid #eef2f7;font-weight:600;color:#1a3a6b;">이즈피엠피</td><td style="padding:8px;border-bottom:1px solid #eef2f7;">한국전력공사</td><td style="padding:8px;border-bottom:1px solid #eef2f7;">BIXPO 2026 행사대행 용역</td><td style="padding:8px;border-bottom:1px solid #eef2f7;text-align:right;white-space:nowrap;">3,724,932,569</td><td style="padding:8px;border-bottom:1px solid #eef2f7;white-space:nowrap;">07-07</td></tr>
-        <tr><td style="padding:8px 10px;border-bottom:1px solid #eef2f7;font-weight:600;color:#1a3a6b;">키멕스</td><td style="padding:8px;border-bottom:1px solid #eef2f7;">한국언론진흥재단</td><td style="padding:8px;border-bottom:1px solid #eef2f7;">2026 KPF 저널리즘 컨퍼런스 행사 용역</td><td style="padding:8px;border-bottom:1px solid #eef2f7;text-align:right;white-space:nowrap;">297,000,000</td><td style="padding:8px;border-bottom:1px solid #eef2f7;white-space:nowrap;">07-03</td></tr>
-        <tr><td style="padding:8px 10px;border-bottom:1px solid #eef2f7;font-weight:600;color:#1a3a6b;">비볼드커뮤니케이션즈</td><td style="padding:8px;border-bottom:1px solid #eef2f7;">평택산업진흥원</td><td style="padding:8px;border-bottom:1px solid #eef2f7;">2026 평택시 미래자동차 포럼 행사대행</td><td style="padding:8px;border-bottom:1px solid #eef2f7;text-align:right;white-space:nowrap;">68,200,000</td><td style="padding:8px;border-bottom:1px solid #eef2f7;white-space:nowrap;">07-06</td></tr>
-        <tr><td style="padding:8px 10px;border-bottom:1px solid #eef2f7;font-weight:600;color:#1a3a6b;">리컨벤션</td><td style="padding:8px;border-bottom:1px solid #eef2f7;">부산경제진흥원</td><td style="padding:8px;border-bottom:1px solid #eef2f7;">2026 부산 수제맥주 마스터스 챌린지 행사</td><td style="padding:8px;border-bottom:1px solid #eef2f7;text-align:right;white-space:nowrap;color:#8a97a4;">(추정 161,818,182)</td><td style="padding:8px;border-bottom:1px solid #eef2f7;white-space:nowrap;">07-10</td></tr>
-        <tr><td style="padding:8px 10px;border-bottom:1px solid #eef2f7;font-weight:600;color:#1a3a6b;">유니원커뮤니케이션즈</td><td style="padding:8px;border-bottom:1px solid #eef2f7;">서울디자인재단</td><td style="padding:8px;border-bottom:1px solid #eef2f7;">세계디자인총회 프리포럼 기획·운영 용역</td><td style="padding:8px;border-bottom:1px solid #eef2f7;text-align:right;white-space:nowrap;color:#8a97a4;">(추정 227,272,727)</td><td style="padding:8px;border-bottom:1px solid #eef2f7;white-space:nowrap;">07-15</td></tr>
-        <tr><td style="padding:8px 10px;font-weight:600;color:#1a3a6b;">엠앤씨커뮤니케이션즈</td><td style="padding:8px;">한국지능정보사회진흥원</td><td style="padding:8px;">2026 넷챌린지 캠프 시즌13 및 KOREN 31주년 기념행사 용역</td><td style="padding:8px;text-align:right;white-space:nowrap;color:#8a97a4;">(추정 345,263,636)</td><td style="padding:8px;white-space:nowrap;">07-16</td></tr>
-      </tbody>
-    </table>
-    <div class="note">※ 금액은 투찰(낙찰)금액 기준. 협상에 의한 계약 3건은 낙찰금액이 비공개여서 KBID 입찰공고 상세의 추정가격을 괄호로 표기(기초금액 미공개). 수집: KBID 용역 결과공고·낙찰업체명 검색 + 통합검색 상세 · 이벤트 키워드 필터. 매일 이번 달 누적 갱신.</div>
-  </section>
-  <section class="card"><h2>⑧ <a href="list.html#spec" target="_blank" style="color:#1a3a6b;text-decoration:none;border-bottom:2px solid #2c5aa0;">3억이하 검토 필요 사전규격</a> <span style="font-size:13px;color:#8a97a4;font-weight:400;">(제목 클릭 → 전체 리스트 HTML)</span></h2>
-    <div class="note" style="margin-top:0;margin-bottom:10px;">KBID 용역 사전규격 · 키워드 17종 사업명 검색 · <b>배정예산 3억원 이하</b> · <b>등록마감 미도래</b> · MICE/PCO 관련도 필터 후 <b>15건</b>(등록마감 임박순). 사전규격은 추정가격 대신 배정예산 표기.</div>
-    <table style="width:100%;border-collapse:collapse;font-size:12.5px;">
-      <thead><tr style="background:#e4f3ef;color:#0f766e;text-align:left;">
-        <th style="padding:8px 10px;border-bottom:2px solid #b9ddd4;">사업명</th>
-        <th style="padding:8px;border-bottom:2px solid #b9ddd4;">수요기관</th>
-        <th style="padding:8px;border-bottom:2px solid #b9ddd4;text-align:right;white-space:nowrap;">배정예산(원)</th>
-        <th style="padding:8px;border-bottom:2px solid #b9ddd4;white-space:nowrap;">접수일</th>
-        <th style="padding:8px;border-bottom:2px solid #b9ddd4;white-space:nowrap;">등록마감일시</th>
-        <th style="padding:8px;border-bottom:2px solid #b9ddd4;">키워드</th></tr></thead>
-      <tbody>
-        <tr><td style="padding:7px 10px;border-bottom:1px solid #eef2f7;">2026년 지식재산사업화 컨퍼런스 운영 용역</td><td style="padding:7px;border-bottom:1px solid #eef2f7;">한국발명진흥회</td><td style="padding:7px;border-bottom:1px solid #eef2f7;text-align:right;white-space:nowrap;color:#0f766e;font-weight:600;">135,000,000</td><td style="padding:7px;border-bottom:1px solid #eef2f7;white-space:nowrap;">07-27 11:19</td><td style="padding:7px;border-bottom:1px solid #eef2f7;white-space:nowrap;">08-01 23:59</td><td style="padding:7px;border-bottom:1px solid #eef2f7;">컨퍼런스</td></tr>
-        <tr><td style="padding:7px 10px;border-bottom:1px solid #eef2f7;">인공지능서비스 이용자보호 컨퍼런스 행사 대행</td><td style="padding:7px;border-bottom:1px solid #eef2f7;">정보통신정책연구원</td><td style="padding:7px;border-bottom:1px solid #eef2f7;text-align:right;white-space:nowrap;color:#0f766e;font-weight:600;">38,000,000</td><td style="padding:7px;border-bottom:1px solid #eef2f7;white-space:nowrap;">07-30 13:50</td><td style="padding:7px;border-bottom:1px solid #eef2f7;white-space:nowrap;">08-04 23:59</td><td style="padding:7px;border-bottom:1px solid #eef2f7;">컨퍼런스</td></tr>
-        <tr><td style="padding:7px 10px;border-bottom:1px solid #eef2f7;">2026 경남 SMR 국제 콘퍼런스 운영 용역</td><td style="padding:7px;border-bottom:1px solid #eef2f7;">(사)한국원자력산업협회</td><td style="padding:7px;border-bottom:1px solid #eef2f7;text-align:right;white-space:nowrap;color:#0f766e;font-weight:600;">225,000,000</td><td style="padding:7px;border-bottom:1px solid #eef2f7;white-space:nowrap;">07-29 16:57</td><td style="padding:7px;border-bottom:1px solid #eef2f7;white-space:nowrap;">08-05 07:00</td><td style="padding:7px;border-bottom:1px solid #eef2f7;">콘퍼런스</td></tr>
-        <tr><td style="padding:7px 10px;border-bottom:1px solid #eef2f7;">[긴급] 앵커사업단 아산 스타트업 벤처포럼 프로그램 운영 용역</td><td style="padding:7px;border-bottom:1px solid #eef2f7;">호서대학교 산학협력단</td><td style="padding:7px;border-bottom:1px solid #eef2f7;text-align:right;white-space:nowrap;color:#0f766e;font-weight:600;">60,000,000</td><td style="padding:7px;border-bottom:1px solid #eef2f7;white-space:nowrap;">07-27 09:37</td><td style="padding:7px;border-bottom:1px solid #eef2f7;white-space:nowrap;">07-30 23:59</td><td style="padding:7px;border-bottom:1px solid #eef2f7;">포럼</td></tr>
-        <tr><td style="padding:7px 10px;border-bottom:1px solid #eef2f7;">제24회 한중일PD포럼 행사 운영 용역</td><td style="padding:7px;border-bottom:1px solid #eef2f7;">재단법인 수원컨벤션센터</td><td style="padding:7px;border-bottom:1px solid #eef2f7;text-align:right;white-space:nowrap;color:#0f766e;font-weight:600;">150,000,000</td><td style="padding:7px;border-bottom:1px solid #eef2f7;white-space:nowrap;">07-28 13:27</td><td style="padding:7px;border-bottom:1px solid #eef2f7;white-space:nowrap;">07-31 23:59</td><td style="padding:7px;border-bottom:1px solid #eef2f7;">포럼</td></tr>
-        <tr><td style="padding:7px 10px;border-bottom:1px solid #eef2f7;">2026년 K-유교 국제포럼 행사 대행 용역</td><td style="padding:7px;border-bottom:1px solid #eef2f7;">재단법인한국유교문화진흥원</td><td style="padding:7px;border-bottom:1px solid #eef2f7;text-align:right;white-space:nowrap;color:#0f766e;font-weight:600;">73,320,000</td><td style="padding:7px;border-bottom:1px solid #eef2f7;white-space:nowrap;">07-27 16:41</td><td style="padding:7px;border-bottom:1px solid #eef2f7;white-space:nowrap;">08-01 23:59</td><td style="padding:7px;border-bottom:1px solid #eef2f7;">포럼</td></tr>
-        <tr><td style="padding:7px 10px;border-bottom:1px solid #eef2f7;">[52178]Apple제조업R&amp;D지원센터 국제포럼 운영 용역</td><td style="padding:7px;border-bottom:1px solid #eef2f7;">포항공과대학교 산학협력단</td><td style="padding:7px;border-bottom:1px solid #eef2f7;text-align:right;white-space:nowrap;color:#0f766e;font-weight:600;">160,000,000</td><td style="padding:7px;border-bottom:1px solid #eef2f7;white-space:nowrap;">07-27 11:43</td><td style="padding:7px;border-bottom:1px solid #eef2f7;white-space:nowrap;">08-01 23:59</td><td style="padding:7px;border-bottom:1px solid #eef2f7;">포럼</td></tr>
-        <tr><td style="padding:7px 10px;border-bottom:1px solid #eef2f7;">2026 APEC 스타트업 글로벌 성장전략 포럼 행사대행 용역</td><td style="padding:7px;border-bottom:1px solid #eef2f7;">중소벤처기업진흥공단</td><td style="padding:7px;border-bottom:1px solid #eef2f7;text-align:right;white-space:nowrap;color:#0f766e;font-weight:600;">84,069,164</td><td style="padding:7px;border-bottom:1px solid #eef2f7;white-space:nowrap;">07-28 17:49</td><td style="padding:7px;border-bottom:1px solid #eef2f7;white-space:nowrap;">08-02 23:59</td><td style="padding:7px;border-bottom:1px solid #eef2f7;">포럼</td></tr>
-        <tr><td style="padding:7px 10px;border-bottom:1px solid #eef2f7;">제4회 대구경북신공항 국제물류포럼 운영 용역</td><td style="padding:7px;border-bottom:1px solid #eef2f7;">재단법인 경상북도경제진흥원</td><td style="padding:7px;border-bottom:1px solid #eef2f7;text-align:right;white-space:nowrap;color:#0f766e;font-weight:600;">170,000,000</td><td style="padding:7px;border-bottom:1px solid #eef2f7;white-space:nowrap;">07-30 08:58</td><td style="padding:7px;border-bottom:1px solid #eef2f7;white-space:nowrap;">08-04 09:00</td><td style="padding:7px;border-bottom:1px solid #eef2f7;">포럼</td></tr>
-        <tr><td style="padding:7px 10px;border-bottom:1px solid #eef2f7;">제주4·3평화재단 제16회 제주4·3평화포럼 운영 대행업체 선정</td><td style="padding:7px;border-bottom:1px solid #eef2f7;">재단법인 제주4·3평화재단</td><td style="padding:7px;border-bottom:1px solid #eef2f7;text-align:right;white-space:nowrap;color:#0f766e;font-weight:600;">97,000,000</td><td style="padding:7px;border-bottom:1px solid #eef2f7;white-space:nowrap;">07-29 12:02</td><td style="padding:7px;border-bottom:1px solid #eef2f7;white-space:nowrap;">08-04 18:00</td><td style="padding:7px;border-bottom:1px solid #eef2f7;">포럼</td></tr>
-        <tr><td style="padding:7px 10px;border-bottom:1px solid #eef2f7;">2026년 글로벌 IP금융 포럼 행사운영 용역</td><td style="padding:7px;border-bottom:1px solid #eef2f7;">한국발명진흥회</td><td style="padding:7px;border-bottom:1px solid #eef2f7;text-align:right;white-space:nowrap;color:#0f766e;font-weight:600;">80,000,000</td><td style="padding:7px;border-bottom:1px solid #eef2f7;white-space:nowrap;">07-30 11:32</td><td style="padding:7px;border-bottom:1px solid #eef2f7;white-space:nowrap;">08-04 23:59</td><td style="padding:7px;border-bottom:1px solid #eef2f7;">포럼</td></tr>
-        <tr><td style="padding:7px 10px;border-bottom:1px solid #eef2f7;">2026 국제회의 개최실적 조사</td><td style="padding:7px;border-bottom:1px solid #eef2f7;">한국관광공사</td><td style="padding:7px;border-bottom:1px solid #eef2f7;text-align:right;white-space:nowrap;color:#0f766e;font-weight:600;">149,480,000</td><td style="padding:7px;border-bottom:1px solid #eef2f7;white-space:nowrap;">07-28 15:50</td><td style="padding:7px;border-bottom:1px solid #eef2f7;white-space:nowrap;">07-31 23:59</td><td style="padding:7px;border-bottom:1px solid #eef2f7;">국제회의</td></tr>
-        <tr><td style="padding:7px 10px;border-bottom:1px solid #eef2f7;">2026 국제회의복합지구 MICE 연계 관광프로그램 개발 및 운영 용역</td><td style="padding:7px;border-bottom:1px solid #eef2f7;">대전관광공사</td><td style="padding:7px;border-bottom:1px solid #eef2f7;text-align:right;white-space:nowrap;color:#0f766e;font-weight:600;">148,000,000</td><td style="padding:7px;border-bottom:1px solid #eef2f7;white-space:nowrap;">07-27 11:13</td><td style="padding:7px;border-bottom:1px solid #eef2f7;white-space:nowrap;">08-01 23:59</td><td style="padding:7px;border-bottom:1px solid #eef2f7;">국제회의</td></tr>
-        <tr><td style="padding:7px 10px;border-bottom:1px solid #eef2f7;">2026년도 리저널 심포지엄 행사 운영대행 용역</td><td style="padding:7px;border-bottom:1px solid #eef2f7;">행정안전부</td><td style="padding:7px;border-bottom:1px solid #eef2f7;text-align:right;white-space:nowrap;color:#0f766e;font-weight:600;">126,158,230</td><td style="padding:7px;border-bottom:1px solid #eef2f7;white-space:nowrap;">07-28 14:25</td><td style="padding:7px;border-bottom:1px solid #eef2f7;white-space:nowrap;">08-02 23:59</td><td style="padding:7px;border-bottom:1px solid #eef2f7;">행사</td></tr>
-        <tr><td style="padding:7px 10px;border-bottom:1px solid #eef2f7;">유엔참전용사 국제추모의 날 기념식 대행용역</td><td style="padding:7px;border-bottom:1px solid #eef2f7;">국가보훈부</td><td style="padding:7px;border-bottom:1px solid #eef2f7;text-align:right;white-space:nowrap;color:#0f766e;font-weight:600;">151,450,000</td><td style="padding:7px;border-bottom:1px solid #eef2f7;white-space:nowrap;">07-28 09:29</td><td style="padding:7px;border-bottom:1px solid #eef2f7;white-space:nowrap;">08-02 23:59</td><td style="padding:7px;border-bottom:1px solid #eef2f7;">기념식</td></tr>
-      </tbody>
-    </table>
-    <div class="note">※ 수집: KBID 용역 사전규격(bid_before_standard) · 배정예산 3억원 이하 · 의견등록 마감 미도래 · MICE/PCO 관련도 필터. 사전규격은 발주 전 단계로, 실제 입찰공고 시 조건이 변동될 수 있음(참가 사전검토용).</div>
-  </section>
-  <section class="card"><h2>⑨ <a href="list.html#bid" target="_blank" style="color:#1a3a6b;text-decoration:none;border-bottom:2px solid #2c5aa0;">3억이하 검토 필요 입찰정보</a> <span style="font-size:13px;color:#8a97a4;font-weight:400;">(제목 클릭 → 전체 리스트 HTML)</span></h2>
-    <div class="note" style="margin-top:0;margin-bottom:10px;">KBID 입찰공고 · 키워드 17종(포럼·세미나·컨벤션·초청·컨퍼런스·상담회·행사·기념식·워크숍·PCO·총회·국제회의 등) 공고명 검색 · <b>추정가격 3억원 이하</b> · <b>마감 미도래(진행중)</b> · MICE/PCO 관련도 필터 후 <b>50건</b> 중 마감 임박순 주요 10건. 전체 50건은 첨부 엑셀 참조.</div>
-    <table style="width:100%;border-collapse:collapse;font-size:13px;">
-      <thead><tr style="background:#f0f4fa;color:#1a3a6b;text-align:left;">
-        <th style="padding:8px 10px;border-bottom:2px solid #d3ddec;">공고명</th>
-        <th style="padding:8px;border-bottom:2px solid #d3ddec;">발주기관</th>
-        <th style="padding:8px;border-bottom:2px solid #d3ddec;text-align:right;white-space:nowrap;">기초금액</th>
-        <th style="padding:8px;border-bottom:2px solid #d3ddec;text-align:right;white-space:nowrap;">추정가격</th>
-        <th style="padding:8px;border-bottom:2px solid #d3ddec;white-space:nowrap;">마감</th></tr></thead>
-      <tbody>
-        <tr><td style="padding:7px 10px;border-bottom:1px solid #eef2f7;">2027년 SW산업 전망 컨퍼런스 행사운영 용역</td><td style="padding:7px;border-bottom:1px solid #eef2f7;">정보통신산업진흥원 부설 소프트웨어정책연구소</td><td style="padding:7px;border-bottom:1px solid #eef2f7;text-align:right;white-space:nowrap;">55,000,000</td><td style="padding:7px;border-bottom:1px solid #eef2f7;text-align:right;white-space:nowrap;">50,000,000</td><td style="padding:7px;border-bottom:1px solid #eef2f7;white-space:nowrap;">08-04 12:00</td></tr>
-        <tr><td style="padding:7px 10px;border-bottom:1px solid #eef2f7;">의정부 경제자유구역 첨단미래산업 컨퍼런스 대행 용역</td><td style="padding:7px;border-bottom:1px solid #eef2f7;">경기도 의정부시</td><td style="padding:7px;border-bottom:1px solid #eef2f7;text-align:right;white-space:nowrap;">-</td><td style="padding:7px;border-bottom:1px solid #eef2f7;text-align:right;white-space:nowrap;">45,454,545</td><td style="padding:7px;border-bottom:1px solid #eef2f7;white-space:nowrap;">08-04 17:00</td></tr>
-        <tr><td style="padding:7px 10px;border-bottom:1px solid #eef2f7;">2026년 AI와 프라이버시 국제 컨퍼런스 행사대행 용역</td><td style="padding:7px;border-bottom:1px solid #eef2f7;">조달청 서울지방조달청</td><td style="padding:7px;border-bottom:1px solid #eef2f7;text-align:right;white-space:nowrap;">-</td><td style="padding:7px;border-bottom:1px solid #eef2f7;text-align:right;white-space:nowrap;">204,545,455</td><td style="padding:7px;border-bottom:1px solid #eef2f7;white-space:nowrap;">08-06 10:00</td></tr>
-        <tr><td style="padding:7px 10px;border-bottom:1px solid #eef2f7;">2026 도시공간정책 국제컨퍼런스 운영</td><td style="padding:7px;border-bottom:1px solid #eef2f7;">서울특별시</td><td style="padding:7px;border-bottom:1px solid #eef2f7;text-align:right;white-space:nowrap;">-</td><td style="padding:7px;border-bottom:1px solid #eef2f7;text-align:right;white-space:nowrap;">118,181,818</td><td style="padding:7px;border-bottom:1px solid #eef2f7;white-space:nowrap;">08-06 16:00</td></tr>
-        <tr><td style="padding:7px 10px;border-bottom:1px solid #eef2f7;">한글점자 반포 100주년 국제컨퍼런스 대행용역 (재공고)</td><td style="padding:7px;border-bottom:1px solid #eef2f7;"></td><td style="padding:7px;border-bottom:1px solid #eef2f7;text-align:right;white-space:nowrap;">-</td><td style="padding:7px;border-bottom:1px solid #eef2f7;text-align:right;white-space:nowrap;">185,090,909</td><td style="padding:7px;border-bottom:1px solid #eef2f7;white-space:nowrap;">08-10 11:00</td></tr>
-        <tr><td style="padding:7px 10px;border-bottom:1px solid #eef2f7;">2026 제12회 국제 CSI 컨퍼런스 계약</td><td style="padding:7px;border-bottom:1px solid #eef2f7;">조달청 서울지방조달청</td><td style="padding:7px;border-bottom:1px solid #eef2f7;text-align:right;white-space:nowrap;">-</td><td style="padding:7px;border-bottom:1px solid #eef2f7;text-align:right;white-space:nowrap;">216,363,636</td><td style="padding:7px;border-bottom:1px solid #eef2f7;white-space:nowrap;">08-11 10:00</td></tr>
-        <tr><td style="padding:7px 10px;border-bottom:1px solid #eef2f7;">IFWY(국제청년포럼) 은평 글로벌 아카데미 및 컨퍼런스 대행 용역</td><td style="padding:7px;border-bottom:1px solid #eef2f7;">서울특별시 은평구</td><td style="padding:7px;border-bottom:1px solid #eef2f7;text-align:right;white-space:nowrap;">-</td><td style="padding:7px;border-bottom:1px solid #eef2f7;text-align:right;white-space:nowrap;">162,272,727</td><td style="padding:7px;border-bottom:1px solid #eef2f7;white-space:nowrap;">08-12 17:00</td></tr>
-        <tr><td style="padding:7px 10px;border-bottom:1px solid #eef2f7;">2026년도 고용서비스분야 컨퍼런스(2회) 행사 기획 및 운영</td><td style="padding:7px;border-bottom:1px solid #eef2f7;">조달청 서울지방조달청</td><td style="padding:7px;border-bottom:1px solid #eef2f7;text-align:right;white-space:nowrap;">-</td><td style="padding:7px;border-bottom:1px solid #eef2f7;text-align:right;white-space:nowrap;">155,954,545</td><td style="padding:7px;border-bottom:1px solid #eef2f7;white-space:nowrap;">08-20 10:00</td></tr>
-        <tr><td style="padding:7px 10px;border-bottom:1px solid #eef2f7;">[2026 글로벌 K-컨벤션 육성사업] 제2회 강릉 천연물 바이오 국제 콘퍼런스 운영 용역</td><td style="padding:7px;border-bottom:1px solid #eef2f7;">강릉관광개발공사</td><td style="padding:7px;border-bottom:1px solid #eef2f7;text-align:right;white-space:nowrap;">186,350,000</td><td style="padding:7px;border-bottom:1px solid #eef2f7;text-align:right;white-space:nowrap;">169,409,091</td><td style="padding:7px;border-bottom:1px solid #eef2f7;white-space:nowrap;">07-31 17:00</td></tr>
-        <tr><td style="padding:7px 10px;border-bottom:1px solid #eef2f7;">[정정공고] 2026 진로교육 콘퍼런스 운영 대행 용역</td><td style="padding:7px;border-bottom:1px solid #eef2f7;">경상남도교육청 경상남도교육청진로교육원</td><td style="padding:7px;border-bottom:1px solid #eef2f7;text-align:right;white-space:nowrap;">193,600,000</td><td style="padding:7px;border-bottom:1px solid #eef2f7;text-align:right;white-space:nowrap;">176,000,000</td><td style="padding:7px;border-bottom:1px solid #eef2f7;white-space:nowrap;">08-03 17:00</td></tr>
-      </tbody>
-    </table>
-    <div class="note">※ 수집: KBID 통합검색 입찰공고(진행중), 추정가격 3억원 이하 로컬 필터, 마감 임박순. 전체 104건은 요청 시 엑셀로 제공. 낙찰 아님(입찰 예정 건) — 참가 검토용.</div>
-  </section>
-  <footer class="rpt">본 리포트는 공개 출처를 자동 수집·정리한 것으로, 세부 내용은 원문 확인이 필요합니다. · 2026-07-30 자동 생성</footer>
-</div></body></html>
+<!-- ⑥ K-MICE -->
+<section>
+  <h2><span class="num">⑥</span> K-MICE (한국관광공사 MICE 정보시스템)</h2>
+  <div class="note">K-MICE 포털(k-mice.visitkorea.or.kr) 메인의 소식·MICE 캘린더·카드뉴스·지식마당은 스크립트 지연 렌더링으로 이번 실행에서 목록을 추출하지 못했습니다. 상단 헤더의 <b>7월 캘린더 위젯</b>으로 이번 달 일정 프레임을 대체 제공합니다. 세션 확보 후 재실행 시 정상 수집됩니다.</div>
+</section>
+
+<!-- ⑦ 낙찰현황 -->
+<section>
+  <h2><span class="num">⑦</span> 회원사 나라장터 낙찰현황 (7월 누적)</h2>
+  <div class="note">KBID(kbid.co.kr) <b>낙찰업체명 검색은 로그인이 필요</b>하여 이번 자동 실행에서 수집하지 못했습니다. KBID 로그인 세션 확보 후 재실행하면 이사사·정회원 51개사의 7월 누적 낙찰현황(수주사·발주기관·용역명·낙찰금액·개찰일)이 채워집니다.</div>
+</section>
+
+<!-- ⑧ 사전규격 -->
+<section>
+  <h2><span class="num">⑧</span> <a href="list.html#spec" class="seeall">3억이하 검토 필요 사전규격 (전체보기 →)</a></h2>
+  <div class="note">KBID 사전규격 API가 로그인 세션을 요구하여 이번 실행에서 수집하지 못했습니다. 세션 확보 후 재실행 시 배정예산 3억원 이하·등록마감 미도래 용역 사전규격이 키워드 중요도순으로 채워집니다.</div>
+</section>
+
+<!-- ⑨ 입찰정보 -->
+<section>
+  <h2><span class="num">⑨</span> <a href="list.html#bid" class="seeall">3억이하 검토 필요 입찰정보 (전체보기 →)</a></h2>
+  <div class="note">KBID 입찰공고 검색이 로그인 세션을 요구하여 이번 실행에서 수집하지 못했습니다. 세션 확보 후 재실행 시 추정가격 3억원 이하·마감 미도래 입찰정보가 키워드 중요도순으로 채워집니다.</div>
+</section>
+
+<footer>
+  ⓒ 2026 주식회사 아토마이스 · MICE·PCO 데일리 브리프 · 자동 생성 리포트 (2026-07-31)
+</footer>
+</div>
+</body>
+</html>
