@@ -1,47 +1,179 @@
-<!DOCTYPE html><html lang='ko'><head><meta charset='utf-8'><meta name='viewport' content='width=device-width,initial-scale=1'><title>8월 3일 (월) MICE 및 PCO업계 소식 리포트</title><style>
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>8월 3일 MICE 및 PCO업계 소식 리포트</title>
+<style>
 *{box-sizing:border-box}
-body{margin:0;font-family:'Malgun Gothic','Apple SD Gothic Neo',sans-serif;background:#eef1f5;color:#1f2937;line-height:1.6}
-.wrap{max-width:960px;margin:0 auto;padding:0 16px 60px}
-header.top{background:linear-gradient(135deg,#1a3a6b,#274b8a);color:#fff;padding:22px 24px;border-radius:0 0 14px 14px;display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
-header.top .htitle{font-size:22px;font-weight:800}
-header.top .hsub{font-size:13px;color:#ffd97a;margin-top:4px}
-.calbox{background:rgba(255,255,255,.10);border:1px solid rgba(255,255,255,.25);border-radius:10px;padding:10px 12px;min-width:300px}
-.calbox h4{margin:0 0 6px;font-size:13px;color:#ffd97a;text-align:center}
-table.cal{border-collapse:collapse;width:100%}
-table.cal th{font-size:11px;color:#cbd5e1;padding:2px}
-table.cal td{width:14.28%;height:26px;text-align:center;font-size:12px;color:#e2e8f0;position:relative;border-radius:4px}
-td.calday{background:#ffce6a;color:#1a3a6b;font-weight:700;cursor:pointer}
-td.today{outline:2px solid #fff}
-#calTip{position:fixed;z-index:99;display:none;background:#111827;color:#fff;padding:8px 10px;border-radius:8px;font-size:12px;max-width:280px;box-shadow:0 6px 18px rgba(0,0,0,.35);white-space:pre-line;pointer-events:none}
-section{background:#fff;border-radius:12px;padding:18px 20px;margin-top:16px;box-shadow:0 1px 3px rgba(0,0,0,.06)}
-section h2{font-size:16px;margin:0 0 12px;padding-left:10px;border-left:4px solid #1a3a6b;color:#1a3a6b}
-section h2 a{color:#1a3a6b;text-decoration:none}
-.sub{font-size:13px;font-weight:700;color:#374151;margin:12px 0 4px}
-ul.lst{list-style:none;margin:0;padding:0}
-ul.lst li{padding:6px 0;border-bottom:1px dashed #e5e7eb;font-size:13.5px}
+body{margin:0;font-family:'Malgun Gothic','Apple SD Gothic Neo',sans-serif;background:#f4f6fa;color:#23303e;line-height:1.6}
+.wrap{max-width:1080px;margin:0 auto;padding:0 18px 60px}
+.hdr{background:linear-gradient(135deg,#1a3a6b,#2b5aa0);color:#fff;padding:26px 30px;border-radius:0 0 16px 16px;display:flex;justify-content:space-between;align-items:flex-start;gap:24px;flex-wrap:wrap}
+.hdr h1{margin:0;font-size:25px;letter-spacing:-.5px}
+.hdr .date{margin-top:6px;color:#ffd97a;font-weight:700;font-size:14px}
+.hdr .sub{margin-top:4px;color:#cdddf2;font-size:12.5px}
+.calmini{border-collapse:collapse;background:#fff;border-radius:10px;overflow:hidden;font-size:11px;color:#33465c;box-shadow:0 4px 14px rgba(0,0,0,.15)}
+.calmini th{background:#eef3fb;padding:5px 7px;font-weight:700;color:#3b5170}
+.calmini td{width:30px;height:28px;text-align:center;border:1px solid #eef1f6;position:relative;color:#40546c}
+.calmini td.empty{background:#fafbfd}
+.calmini .sun{color:#d64550}.calmini .sat{color:#2f6fd0}
+.calmini td.today{background:#ffce6a;font-weight:800;color:#1a3a6b}
+.calmini td.hasev{background:#eaf2ff;font-weight:700;cursor:pointer}
+.calmini td.hasev.today{background:#ffce6a}
+.evdot{position:absolute;top:1px;right:2px;background:#e11d48;color:#fff;font-size:8px;line-height:1;padding:1px 3px;border-radius:6px}
+.captop{color:#cdddf2;font-size:11px;margin:0 0 5px;text-align:center}
+section{background:#fff;border-radius:14px;padding:20px 24px;margin-top:18px;box-shadow:0 2px 10px rgba(20,40,80,.05)}
+h2{font-size:17px;margin:0 0 14px;padding-bottom:9px;border-bottom:2px solid #1a3a6b;color:#1a3a6b}
+h2 .cnt{font-size:12px;color:#5b6b7e;font-weight:600;margin-left:6px}
+h2 a{color:#1a3a6b;text-decoration:none}
+h3{font-size:13.5px;color:#33475f;margin:14px 0 7px}
+.summary{background:#f0f5fc;border-left:4px solid #1a3a6b}
+.summary ul{margin:8px 0 0;padding-left:20px}
+.summary li{margin:4px 0;font-size:13.5px}
+ul.lst{margin:6px 0;padding-left:0;list-style:none}
+ul.lst li{padding:6px 0;border-bottom:1px dashed #e3e8f0;font-size:13px}
 ul.lst li:last-child{border-bottom:none}
-ul.lst a{color:#1d4ed8;text-decoration:none}
-ul.lst a:hover{text-decoration:underline}
-.date{color:#6b7280;font-size:12px;margin-left:6px}
-.summary{background:#f8fafc;border:1px solid #e2e8f0}
-.summary ul{margin:6px 0 0;padding-left:18px}
-.summary li{margin:3px 0;font-size:13.5px}
-.note{background:#fff8f2;border:1px solid #fde4cf;border-radius:8px;padding:10px 12px;font-size:12.5px;color:#9a3412;margin-top:8px}
-.foot{text-align:center;color:#9ca3af;font-size:11.5px;margin-top:22px}
-</style></head><body><header class='top'><div><div class='htitle'>8월 3일 MICE 및 PCO업계 소식 리포트</div><div class='hsub'>기준일 8월 3일 (월) · 월요일(주말 반영) · (주)아토마이스</div></div><div class="calbox"><h4>2026년 8월 MICE 캘린더</h4><table class="cal"><tr><th>일</th><th>월</th><th>화</th><th>수</th><th>목</th><th>금</th><th>토</th></tr><tr><td></td><td></td><td></td><td></td><td></td><td></td><td class="">1</td></tr><tr><td class="calday" data-tip="• 제3회 AI 센서 및 트랜스듀서 국제학술대회 (08.02~08.07)" title="• 제3회 AI 센서 및 트랜스듀서 국제학술대회 (08.02~08.07)">2</td><td class="calday today" data-tip="• 제3회 AI 센서 및 트랜스듀서 국제학술대회 (08.02~08.07)\n• 2026 더블린 코어 및 메타데이터 응용 국제 컨퍼런스 (08.03~08.07)" title="• 제3회 AI 센서 및 트랜스듀서 국제학술대회 (08.02~08.07) / • 2026 더블린 코어 및 메타데이터 응용 국제 컨퍼런스 (08.03~08.07)">3</td><td class="calday" data-tip="• 제3회 AI 센서 및 트랜스듀서 국제학술대회 (08.02~08.07)\n• 2026 더블린 코어 및 메타데이터 응용 국제 컨퍼런스 (08.03~08.07)" title="• 제3회 AI 센서 및 트랜스듀서 국제학술대회 (08.02~08.07) / • 2026 더블린 코어 및 메타데이터 응용 국제 컨퍼런스 (08.03~08.07)">4</td><td class="calday" data-tip="• 제3회 AI 센서 및 트랜스듀서 국제학술대회 (08.02~08.07)\n• 2026 더블린 코어 및 메타데이터 응용 국제 컨퍼런스 (08.03~08.07)\n• 2026 그린에너텍 ESG 컨퍼런스 (08.05~08.07)" title="• 제3회 AI 센서 및 트랜스듀서 국제학술대회 (08.02~08.07) / • 2026 더블린 코어 및 메타데이터 응용 국제 컨퍼런스 (08.03~08.07) / • 2026 그린에너텍 ESG 컨퍼런스 (08.05~08.07)">5</td><td class="calday" data-tip="• 제3회 AI 센서 및 트랜스듀서 국제학술대회 (08.02~08.07)\n• 2026 더블린 코어 및 메타데이터 응용 국제 컨퍼런스 (08.03~08.07)\n• 2026 그린에너텍 ESG 컨퍼런스 (08.05~08.07)" title="• 제3회 AI 센서 및 트랜스듀서 국제학술대회 (08.02~08.07) / • 2026 더블린 코어 및 메타데이터 응용 국제 컨퍼런스 (08.03~08.07) / • 2026 그린에너텍 ESG 컨퍼런스 (08.05~08.07)">6</td><td class="calday" data-tip="• 제3회 AI 센서 및 트랜스듀서 국제학술대회 (08.02~08.07)\n• 2026 더블린 코어 및 메타데이터 응용 국제 컨퍼런스 (08.03~08.07)\n• 2026 그린에너텍 ESG 컨퍼런스 (08.05~08.07)" title="• 제3회 AI 센서 및 트랜스듀서 국제학술대회 (08.02~08.07) / • 2026 더블린 코어 및 메타데이터 응용 국제 컨퍼런스 (08.03~08.07) / • 2026 그린에너텍 ESG 컨퍼런스 (08.05~08.07)">7</td><td class="">8</td></tr><tr><td class="calday" data-tip="• 지능시스템 국제워크숍 (IWIS 2026) (08.09~08.12)\n• 제72회 세계식육과학기술학회 (08.09~08.14)\n• 제32회 ACM 지식 발견 및 데이터 마이닝 국제학술대회 (08.09~08.13)\n• 제37회 IUPAP 계산물리 국제학술대회 (CCP 2026) (08.09~08.14)" title="• 지능시스템 국제워크숍 (IWIS 2026) (08.09~08.12) / • 제72회 세계식육과학기술학회 (08.09~08.14) / • 제32회 ACM 지식 발견 및 데이터 마이닝 국제학술대회 (08.09~08.13) / • 제37회 IUPAP 계산물리 국제학술대회 (CCP 2026) (08.09~08.14)">9</td><td class="calday" data-tip="• 지능시스템 국제워크숍 (IWIS 2026) (08.09~08.12)\n• 제72회 세계식육과학기술학회 (08.09~08.14)\n• 제32회 ACM 지식 발견 및 데이터 마이닝 국제학술대회 (08.09~08.13)\n• 제37회 IUPAP 계산물리 국제학술대회 (CCP 2026) (08.09~08.14)\n• 제90회 세계도서관정보대회 (08.10~08.13)\n• 제10회 AUAP 글로벌 리더십 프로그램 (08.10~08.18)" title="• 지능시스템 국제워크숍 (IWIS 2026) (08.09~08.12) / • 제72회 세계식육과학기술학회 (08.09~08.14) / • 제32회 ACM 지식 발견 및 데이터 마이닝 국제학술대회 (08.09~08.13) / • 제37회 IUPAP 계산물리 국제학술대회 (CCP 2026) (08.09~08.14) / • 제90회 세계도서관정보대회 (08.10~08.13) / • 제10회 AUAP 글로벌 리더십 프로그램 (08.10~08.18)">10</td><td class="calday" data-tip="• 지능시스템 국제워크숍 (IWIS 2026) (08.09~08.12)\n• 제72회 세계식육과학기술학회 (08.09~08.14)\n• 제32회 ACM 지식 발견 및 데이터 마이닝 국제학술대회 (08.09~08.13)\n• 제37회 IUPAP 계산물리 국제학술대회 (CCP 2026) (08.09~08.14)\n• 제90회 세계도서관정보대회 (08.10~08.13)\n• 제10회 AUAP 글로벌 리더십 프로그램 (08.10~08.18)" title="• 지능시스템 국제워크숍 (IWIS 2026) (08.09~08.12) / • 제72회 세계식육과학기술학회 (08.09~08.14) / • 제32회 ACM 지식 발견 및 데이터 마이닝 국제학술대회 (08.09~08.13) / • 제37회 IUPAP 계산물리 국제학술대회 (CCP 2026) (08.09~08.14) / • 제90회 세계도서관정보대회 (08.10~08.13) / • 제10회 AUAP 글로벌 리더십 프로그램 (08.10~08.18)">11</td><td class="calday" data-tip="• 지능시스템 국제워크숍 (IWIS 2026) (08.09~08.12)\n• 제72회 세계식육과학기술학회 (08.09~08.14)\n• 제32회 ACM 지식 발견 및 데이터 마이닝 국제학술대회 (08.09~08.13)\n• 제37회 IUPAP 계산물리 국제학술대회 (CCP 2026) (08.09~08.14)\n• 제90회 세계도서관정보대회 (08.10~08.13)\n• 제10회 AUAP 글로벌 리더십 프로그램 (08.10~08.18)" title="• 지능시스템 국제워크숍 (IWIS 2026) (08.09~08.12) / • 제72회 세계식육과학기술학회 (08.09~08.14) / • 제32회 ACM 지식 발견 및 데이터 마이닝 국제학술대회 (08.09~08.13) / • 제37회 IUPAP 계산물리 국제학술대회 (CCP 2026) (08.09~08.14) / • 제90회 세계도서관정보대회 (08.10~08.13) / • 제10회 AUAP 글로벌 리더십 프로그램 (08.10~08.18)">12</td><td class="calday" data-tip="• 제72회 세계식육과학기술학회 (08.09~08.14)\n• 제32회 ACM 지식 발견 및 데이터 마이닝 국제학술대회 (08.09~08.13)\n• 제37회 IUPAP 계산물리 국제학술대회 (CCP 2026) (08.09~08.14)\n• 제90회 세계도서관정보대회 (08.10~08.13)\n• 제10회 AUAP 글로벌 리더십 프로그램 (08.10~08.18)\n• 제21회 슬라브 언어학회 연례 학술대회 (08.12~08.14)" title="• 제72회 세계식육과학기술학회 (08.09~08.14) / • 제32회 ACM 지식 발견 및 데이터 마이닝 국제학술대회 (08.09~08.13) / • 제37회 IUPAP 계산물리 국제학술대회 (CCP 2026) (08.09~08.14) / • 제90회 세계도서관정보대회 (08.10~08.13) / • 제10회 AUAP 글로벌 리더십 프로그램 (08.10~08.18) / • 제21회 슬라브 언어학회 연례 학술대회 (08.12~08.14)">13</td><td class="calday" data-tip="• 제72회 세계식육과학기술학회 (08.09~08.14)\n• 제37회 IUPAP 계산물리 국제학술대회 (CCP 2026) (08.09~08.14)\n• 제10회 AUAP 글로벌 리더십 프로그램 (08.10~08.18)\n• 제21회 슬라브 언어학회 연례 학술대회 (08.12~08.14)" title="• 제72회 세계식육과학기술학회 (08.09~08.14) / • 제37회 IUPAP 계산물리 국제학술대회 (CCP 2026) (08.09~08.14) / • 제10회 AUAP 글로벌 리더십 프로그램 (08.10~08.18) / • 제21회 슬라브 언어학회 연례 학술대회 (08.12~08.14)">14</td><td class="calday" data-tip="• 제10회 AUAP 글로벌 리더십 프로그램 (08.10~08.18)" title="• 제10회 AUAP 글로벌 리더십 프로그램 (08.10~08.18)">15</td></tr><tr><td class="calday" data-tip="• 제10회 AUAP 글로벌 리더십 프로그램 (08.10~08.18)\n• 제33회 국제선형가속기컨퍼런스 (08.16~08.21)" title="• 제10회 AUAP 글로벌 리더십 프로그램 (08.10~08.18) / • 제33회 국제선형가속기컨퍼런스 (08.16~08.21)">16</td><td class="calday" data-tip="• 제10회 AUAP 글로벌 리더십 프로그램 (08.10~08.18)\n• 제33회 국제선형가속기컨퍼런스 (08.16~08.21)" title="• 제10회 AUAP 글로벌 리더십 프로그램 (08.10~08.18) / • 제33회 국제선형가속기컨퍼런스 (08.16~08.21)">17</td><td class="calday" data-tip="• 제10회 AUAP 글로벌 리더십 프로그램 (08.10~08.18)\n• 제33회 국제선형가속기컨퍼런스 (08.16~08.21)\n• 2026 세계인쇄회의 총회 및 국제콘퍼런스 (WPCF 2026) (08.18~08.21)\n• 제26회 국제정보디스플레이 학술대회 (08.18~08.21)" title="• 제10회 AUAP 글로벌 리더십 프로그램 (08.10~08.18) / • 제33회 국제선형가속기컨퍼런스 (08.16~08.21) / • 2026 세계인쇄회의 총회 및 국제콘퍼런스 (WPCF 2026) (08.18~08.21) / • 제26회 국제정보디스플레이 학술대회 (08.18~08.21)">18</td><td class="calday" data-tip="• 제33회 국제선형가속기컨퍼런스 (08.16~08.21)\n• 2026 세계인쇄회의 총회 및 국제콘퍼런스 (WPCF 2026) (08.18~08.21)\n• 제26회 국제정보디스플레이 학술대회 (08.18~08.21)\n• 2026 대한민국 국제 병원 및 헬스테크 박람회 (08.19~08.20)" title="• 제33회 국제선형가속기컨퍼런스 (08.16~08.21) / • 2026 세계인쇄회의 총회 및 국제콘퍼런스 (WPCF 2026) (08.18~08.21) / • 제26회 국제정보디스플레이 학술대회 (08.18~08.21) / • 2026 대한민국 국제 병원 및 헬스테크 박람회 (08.19~08.20)">19</td><td class="calday" data-tip="• 제33회 국제선형가속기컨퍼런스 (08.16~08.21)\n• 2026 세계인쇄회의 총회 및 국제콘퍼런스 (WPCF 2026) (08.18~08.21)\n• 제26회 국제정보디스플레이 학술대회 (08.18~08.21)\n• 2026 대한민국 국제 병원 및 헬스테크 박람회 (08.19~08.20)\n• 2026 연세 국제간호학술대회 (08.20~08.21)" title="• 제33회 국제선형가속기컨퍼런스 (08.16~08.21) / • 2026 세계인쇄회의 총회 및 국제콘퍼런스 (WPCF 2026) (08.18~08.21) / • 제26회 국제정보디스플레이 학술대회 (08.18~08.21) / • 2026 대한민국 국제 병원 및 헬스테크 박람회 (08.19~08.20) / • 2026 연세 국제간호학술대회 (08.20~08.21)">20</td><td class="calday" data-tip="• 제33회 국제선형가속기컨퍼런스 (08.16~08.21)\n• 2026 세계인쇄회의 총회 및 국제콘퍼런스 (WPCF 2026) (08.18~08.21)\n• 제26회 국제정보디스플레이 학술대회 (08.18~08.21)\n• 2026 연세 국제간호학술대회 (08.20~08.21)" title="• 제33회 국제선형가속기컨퍼런스 (08.16~08.21) / • 2026 세계인쇄회의 총회 및 국제콘퍼런스 (WPCF 2026) (08.18~08.21) / • 제26회 국제정보디스플레이 학술대회 (08.18~08.21) / • 2026 연세 국제간호학술대회 (08.20~08.21)">21</td><td class="calday" data-tip="• 2026 세계마스터즈육상연맹 총회 (08.22~09.03)" title="• 2026 세계마스터즈육상연맹 총회 (08.22~09.03)">22</td></tr><tr><td class="calday" data-tip="• 2026 세계마스터즈육상연맹 총회 (08.22~09.03)\n• 제18회 급속응고 및 준안정재료 국제학술대회 (RQ 2026) (08.23~08.28)\n• 2026 국제 토목·환경·재료공학 국제학술대회 (08.23~08.25)\n• 제13회 아시아·오세아니아 진공 및 표면과학 국제학술대회 (08.23~08.27)\n• 제23차 국제자동제어연맹 세계대회 (IFAC 2026 Busan) (08.23~08.28)" title="• 2026 세계마스터즈육상연맹 총회 (08.22~09.03) / • 제18회 급속응고 및 준안정재료 국제학술대회 (RQ 2026) (08.23~08.28) / • 2026 국제 토목·환경·재료공학 국제학술대회 (08.23~08.25) / • 제13회 아시아·오세아니아 진공 및 표면과학 국제학술대회 (08.23~08.27) / • 제23차 국제자동제어연맹 세계대회 (IFAC 2026 Busan) (08.23~08.28)">23</td><td class="calday" data-tip="• 2026 세계마스터즈육상연맹 총회 (08.22~09.03)\n• 제18회 급속응고 및 준안정재료 국제학술대회 (RQ 2026) (08.23~08.28)\n• 2026 국제 토목·환경·재료공학 국제학술대회 (08.23~08.25)\n• 제13회 아시아·오세아니아 진공 및 표면과학 국제학술대회 (08.23~08.27)\n• 제23차 국제자동제어연맹 세계대회 (IFAC 2026 Busan) (08.23~08.28)\n• 제12회 소형 가속기 기반 중성자원 연합 국제회의 (08.24~08.28)" title="• 2026 세계마스터즈육상연맹 총회 (08.22~09.03) / • 제18회 급속응고 및 준안정재료 국제학술대회 (RQ 2026) (08.23~08.28) / • 2026 국제 토목·환경·재료공학 국제학술대회 (08.23~08.25) / • 제13회 아시아·오세아니아 진공 및 표면과학 국제학술대회 (08.23~08.27) / • 제23차 국제자동제어연맹 세계대회 (IFAC 2026 Busan) (08.23~08.28) / • 제12회 소형 가속기 기반 중성자원 연합 국제회의 (08.24~08.28)">24</td><td class="calday" data-tip="• 2026 세계마스터즈육상연맹 총회 (08.22~09.03)\n• 제18회 급속응고 및 준안정재료 국제학술대회 (RQ 2026) (08.23~08.28)\n• 2026 국제 토목·환경·재료공학 국제학술대회 (08.23~08.25)\n• 제13회 아시아·오세아니아 진공 및 표면과학 국제학술대회 (08.23~08.27)\n• 제23차 국제자동제어연맹 세계대회 (IFAC 2026 Busan) (08.23~08.28)\n• 제12회 소형 가속기 기반 중성자원 연합 국제회의 (08.24~08.28)" title="• 2026 세계마스터즈육상연맹 총회 (08.22~09.03) / • 제18회 급속응고 및 준안정재료 국제학술대회 (RQ 2026) (08.23~08.28) / • 2026 국제 토목·환경·재료공학 국제학술대회 (08.23~08.25) / • 제13회 아시아·오세아니아 진공 및 표면과학 국제학술대회 (08.23~08.27) / • 제23차 국제자동제어연맹 세계대회 (IFAC 2026 Busan) (08.23~08.28) / • 제12회 소형 가속기 기반 중성자원 연합 국제회의 (08.24~08.28)">25</td><td class="calday" data-tip="• 2026 세계마스터즈육상연맹 총회 (08.22~09.03)\n• 제18회 급속응고 및 준안정재료 국제학술대회 (RQ 2026) (08.23~08.28)\n• 제13회 아시아·오세아니아 진공 및 표면과학 국제학술대회 (08.23~08.27)\n• 제23차 국제자동제어연맹 세계대회 (IFAC 2026 Busan) (08.23~08.28)\n• 제12회 소형 가속기 기반 중성자원 연합 국제회의 (08.24~08.28)\n• 2026 부산국제마케팅광고제 (MAD STARS 2026) (08.26~08.28)" title="• 2026 세계마스터즈육상연맹 총회 (08.22~09.03) / • 제18회 급속응고 및 준안정재료 국제학술대회 (RQ 2026) (08.23~08.28) / • 제13회 아시아·오세아니아 진공 및 표면과학 국제학술대회 (08.23~08.27) / • 제23차 국제자동제어연맹 세계대회 (IFAC 2026 Busan) (08.23~08.28) / • 제12회 소형 가속기 기반 중성자원 연합 국제회의 (08.24~08.28) / • 2026 부산국제마케팅광고제 (MAD STARS 2026) (08.26~08.28)">26</td><td class="calday" data-tip="• 2026 세계마스터즈육상연맹 총회 (08.22~09.03)\n• 제18회 급속응고 및 준안정재료 국제학술대회 (RQ 2026) (08.23~08.28)\n• 제13회 아시아·오세아니아 진공 및 표면과학 국제학술대회 (08.23~08.27)\n• 제23차 국제자동제어연맹 세계대회 (IFAC 2026 Busan) (08.23~08.28)\n• 제12회 소형 가속기 기반 중성자원 연합 국제회의 (08.24~08.28)\n• 2026 부산국제마케팅광고제 (MAD STARS 2026) (08.26~08.28)" title="• 2026 세계마스터즈육상연맹 총회 (08.22~09.03) / • 제18회 급속응고 및 준안정재료 국제학술대회 (RQ 2026) (08.23~08.28) / • 제13회 아시아·오세아니아 진공 및 표면과학 국제학술대회 (08.23~08.27) / • 제23차 국제자동제어연맹 세계대회 (IFAC 2026 Busan) (08.23~08.28) / • 제12회 소형 가속기 기반 중성자원 연합 국제회의 (08.24~08.28) / • 2026 부산국제마케팅광고제 (MAD STARS 2026) (08.26~08.28)">27</td><td class="calday" data-tip="• 2026 세계마스터즈육상연맹 총회 (08.22~09.03)\n• 제18회 급속응고 및 준안정재료 국제학술대회 (RQ 2026) (08.23~08.28)\n• 제23차 국제자동제어연맹 세계대회 (IFAC 2026 Busan) (08.23~08.28)\n• 제12회 소형 가속기 기반 중성자원 연합 국제회의 (08.24~08.28)\n• 2026 부산국제마케팅광고제 (MAD STARS 2026) (08.26~08.28)\n• 제18회 아시아·오세아니아 국소마취 및 통증의학회 학술대회 (08.28~08.30)" title="• 2026 세계마스터즈육상연맹 총회 (08.22~09.03) / • 제18회 급속응고 및 준안정재료 국제학술대회 (RQ 2026) (08.23~08.28) / • 제23차 국제자동제어연맹 세계대회 (IFAC 2026 Busan) (08.23~08.28) / • 제12회 소형 가속기 기반 중성자원 연합 국제회의 (08.24~08.28) / • 2026 부산국제마케팅광고제 (MAD STARS 2026) (08.26~08.28) / • 제18회 아시아·오세아니아 국소마취 및 통증의학회 학술대회 (08.28~08.30)">28</td><td class="calday" data-tip="• 2026 세계마스터즈육상연맹 총회 (08.22~09.03)\n• 제18회 아시아·오세아니아 국소마취 및 통증의학회 학술대회 (08.28~08.30)" title="• 2026 세계마스터즈육상연맹 총회 (08.22~09.03) / • 제18회 아시아·오세아니아 국소마취 및 통증의학회 학술대회 (08.28~08.30)">29</td></tr><tr><td class="calday" data-tip="• 2026 세계마스터즈육상연맹 총회 (08.22~09.03)\n• 제18회 아시아·오세아니아 국소마취 및 통증의학회 학술대회 (08.28~08.30)" title="• 2026 세계마스터즈육상연맹 총회 (08.22~09.03) / • 제18회 아시아·오세아니아 국소마취 및 통증의학회 학술대회 (08.28~08.30)">30</td><td class="calday" data-tip="• 2026 세계마스터즈육상연맹 총회 (08.22~09.03)" title="• 2026 세계마스터즈육상연맹 총회 (08.22~09.03)">31</td></tr></table></div></header><div class='wrap'><section class='summary'><h2>① 오늘의 요약</h2><ul><li><b>협회 신규 3건</b> — 한국PCO협회 표준계약서 발주기관 교육·신규 MICE 행사 아이디어 공모전, 한국마이스관광학회 2026 MICE 정책포럼(8/21) 안내.</li><li><b>뉴스 클리핑 7건</b> — 잠실 MICE CM 3,820억 개찰 임박, 서울 MICE 마케팅 강화, 속초 역세권 MICE 복합타운, 한림대 글로컬 MICE학과 신설 등.</li><li><b>K-MICE 8월 캘린더 24개 국제행사</b> — IFAC 2026 부산(8/23~28), 세계도서관정보대회(8/10~13), 부산국제마케팅광고제(8/26~28) 등.</li><li><b>⑦⑧⑨ 입찰·사전규격·낙찰 = 수집 실패(KBID 미로그인, 데이터 마스킹).</b> 로그인 세션 확보 후 재실행 필요.</li></ul><div class='note'>⚠️ <b>⑦ 낙찰현황·⑧ 사전규격·⑨ 입찰정보는 이번 회차에 수집하지 못했습니다.</b> KBID(케이비드)가 <b>미로그인 상태</b>로, 공고명·발주기관·금액·마감일이 모두 마스킹(***)되어 실데이터를 확보할 수 없었습니다. 보안정책상 자동 로그인(계정·비밀번호 입력)은 수행하지 않습니다. KBID 로그인 세션이 활성화된 상태에서 재실행하면 ⑦⑧⑨ 전체가 정상 수집됩니다.</div></section><section><h2>② 협회 소식 (KAPCO · 한국MICE협회)</h2><div class='sub'>KAPCO 공지</div><ul class='lst'><li><a href='https://kapco.or.kr/news/noticeView.php?idx=3481' target='_blank'>[한국PCO협회] 2026 국제회의용역 표준계약서 발주기관 교육 개최 안내</a><span class='date'>2026-07-24</span></li><li><a href='https://kapco.or.kr/news/noticeView.php?idx=3482' target='_blank'>[한국마이스관광학회] 2026 MICE 정책포럼 개최 안내 (8/21)</a><span class='date'>2026-07-30</span></li><li><a href='https://kapco.or.kr/news/noticeView.php?idx=3483' target='_blank'>[한국PCO협회] 2026년 신규 MICE 행사 아이디어 공모전 지역 연계 안내</a><span class='date'>2026-07-30</span></li></ul><div class='sub'>KAPCO 업계소식</div><ul class='lst'><li><a href='https://kapco.or.kr/news/newsList.php' target='_blank'>마이스 강국 韓, 국제회의 개최 &#x27;세계 2위&#x27;…서울은 아시아 1위</a><span class='date'>2026-07-13</span></li></ul><div class='sub'>MICE협회 공지</div><ul class='lst'><li><a href='https://www.micekorea.or.kr/page/notice-2' target='_blank'>[한국MICE협회] 인크루트 MICE 기업 전문관 오픈 안내</a><span class='date'>2026-07-21</span></li><li><a href='https://www.micekorea.or.kr/page/notice-2' target='_blank'>(축제행사안전관리원) 제10회 축제행사안전관리자(1·2급) 자격 교육&amp;검정 안내</a><span class='date'>2026-07-30</span></li><li><a href='https://www.micekorea.or.kr/page/notice-2' target='_blank'>(한국마이스관광학회) &#x27;2026 MICE 정책포럼&#x27; 개최 안내</a><span class='date'>2026-07-30</span></li><li><a href='https://www.micekorea.or.kr/page/notice-2' target='_blank'>(한국PCO협회) 2026 국제회의용역 표준계약서 발주기관 교육 개최 안내</a><span class='date'>2026-07-27</span></li></ul><div class='sub'>MICE협회 보도자료</div><ul class='lst'><li><a href='https://www.micekorea.or.kr/page/press-release' target='_blank'>(사)한국MICE협회, &#x27;2026 영마이스 리더 프로젝트&#x27; 교육 성료</a><span class='date'>2026-07-16</span></li></ul></section><section><h2>③ 회원사 동향</h2><div class='note'>KAPCO 회원사(이사사 22·정회원 29)의 개별 신규 소식 피드는 별도 게시되지 않았습니다. 회원사 관련 입찰·낙찰 동향은 ⑦ 낙찰현황(KBID)에서 다루며, 이번 회차는 미로그인으로 수집하지 못했습니다.</div></section><section><h2>④ 컨벤션센터</h2><div class='note'>이번 회차 각 센터(BEXCO·COEX·KINTEX·송도·DCC·EXCO 등) 공지 게시판 직접 수집은 URL 변경/접속오류로 확보하지 못했습니다. 센터 관련 이슈는 ⑤ 뉴스 클리핑의 '잠실 MICE CM', '속초 MICE 복합타운' 기사로 갈음합니다.</div></section><section><h2>⑤ 뉴스 클리핑 <span style='font-size:11px;color:#6b7280'>(출처: 다음 뉴스 — 네이버 차단 폴백)</span></h2><div class='sub'>키워드 · MICE</div><ul class='lst'><li><a href='http://v.daum.net/v/20260803062022781' target='_blank'>3820억 규모 공공 &#x27;CM·감리&#x27; 이달 주인 찾는다 (잠실 MICE CM 최대어)</a><span class='date'>2026-08-03</span></li><li><a href='http://v.daum.net/v/20260803050406878' target='_blank'>5년연속 글로벌 MZ들의 &#x27;최애&#x27; 서울…MICE 마케팅 강화</a><span class='date'>2026-08-03</span></li><li><a href='http://v.daum.net/v/20260803000725057' target='_blank'>&quot;중단없는 속초 발전 약속&quot;…역세권 MICE 복합타운 조성</a><span class='date'>2026-08-03</span></li><li><a href='http://v.daum.net/v/20260802214117784' target='_blank'>대졸 취업률 저조…한림대, 도내 최초 &#x27;글로컬 MICE학과&#x27; 신설</a><span class='date'>2026-08-02</span></li></ul><div class='sub'>키워드 · PCO·컨벤션</div><ul class='lst'><li><a href='http://v.daum.net/v/20260729060337469' target='_blank'>한국마이스관광학회, AI·마이스테크 주제 정책 포럼 개최</a><span class='date'>2026-07-29</span></li><li><a href='http://v.daum.net/v/20260724151102242' target='_blank'>군산시, 마이스 얼라이언스 위촉…&quot;민관 공조 신성장&quot;</a><span class='date'>2026-07-24</span></li><li><a href='http://v.daum.net/v/20260715100550396' target='_blank'>한국측량학회, 2030 국제사진측량·원격탐사학회 총회 한국 유치 성공</a><span class='date'>2026-07-15</span></li></ul></section><section><h2><a href='https://k-mice.visitkorea.or.kr/main.kto?func_name=mainStart' target='_blank'>⑥ K-MICE (한국관광공사 MICE 정보시스템)</a></h2><div class='sub'>MICE 소식</div><ul class='lst'><li><a href='https://k-mice.visitkorea.or.kr/main.kto?func_name=mainStart' target='_blank'>인천관광공사, 「2026 컨벤션 유치 및 개최지원 정기2차」 모집 공고</a><span class='date'>2026-07-09</span></li><li><a href='https://k-mice.visitkorea.or.kr/main.kto?func_name=mainStart' target='_blank'>「2026 글로벌 K-컨벤션 육성 사업」 신규 국제회의 선정 결과 공지</a><span class='date'>2026-05-04</span></li></ul><div class='sub'>MICE 카드뉴스</div><ul class='lst'><li><a href='https://k-mice.visitkorea.or.kr/main.kto?func_name=mainStart' target='_blank'>2024년 MICE 참가자의 주요 변화와 특징</a><span class='date'></span></li><li><a href='https://k-mice.visitkorea.or.kr/main.kto?func_name=mainStart' target='_blank'>MICE 산업이 지역과 산업에 남기는 유산</a><span class='date'></span></li></ul><div class='sub'>MICE 지식마당</div><ul class='lst'><li><a href='https://k-mice.visitkorea.or.kr/main.kto?func_name=mainStart' target='_blank'>APEC 2025 KOREA, 한국 MICE의 새로운 도약점이 되다</a><span class='date'></span></li><li><a href='https://k-mice.visitkorea.or.kr/main.kto?func_name=mainStart' target='_blank'>2026년 대한민국 MICE 산업 트렌드 : T.O.U.C.H</a><span class='date'></span></li><li><a href='https://k-mice.visitkorea.or.kr/main.kto?func_name=mainStart' target='_blank'>[현장탐방] 2025 대한민국 MICE 대상 및 컨퍼런스</a><span class='date'></span></li></ul></section><section><h2>⑦ 회원사 나라장터 낙찰현황 · ⑧ <a href='list.html#spec'>3억이하 사전규격</a> · ⑨ <a href='list.html#bid'>3억이하 입찰정보</a></h2><div class='note'>⚠️ <b>⑦ 낙찰현황·⑧ 사전규격·⑨ 입찰정보는 이번 회차에 수집하지 못했습니다.</b> KBID(케이비드)가 <b>미로그인 상태</b>로, 공고명·발주기관·금액·마감일이 모두 마스킹(***)되어 실데이터를 확보할 수 없었습니다. 보안정책상 자동 로그인(계정·비밀번호 입력)은 수행하지 않습니다. KBID 로그인 세션이 활성화된 상태에서 재실행하면 ⑦⑧⑨ 전체가 정상 수집됩니다.</div><p style='font-size:13px;color:#374151;margin-top:10px'>참고: KBID 로그인 상태에서는 8월 1일~오늘 기준 회원사 낙찰(월 누적), 배정예산 3억 이하 사전규격(등록마감 미도래), 추정가격 3억 이하 입찰정보(입찰마감 미도래)를 17개 이벤트 키워드로 수집하여 NEW(7/31 이후)→마감 임박순으로 정렬해 표기합니다.</p></section><div class='foot'>본 리포트는 매 영업일 오전 자동 생성됩니다 · 기준일 2026-08-03 · 직전 영업일 2026-07-31 (금) 이후 신규 반영</div></div>
-<div id="calTip"></div>
+ul.lst .dt{color:#8494a6;font-size:11.5px;margin-left:6px}
+a.nlink{color:#23507e;text-decoration:none}a.nlink:hover{text-decoration:underline}
+.badge{display:inline-block;font-size:10.5px;padding:1px 6px;border-radius:5px;background:#eef2f8;color:#4a5d74;margin-right:5px}
+.kw{background:#e7f0ff;color:#2657a8}
+.new{background:#e11d48;color:#fff;font-weight:700}
+table.data{width:100%;border-collapse:collapse;font-size:12.5px;margin-top:4px}
+table.data th{background:#f0f4fa;color:#33475f;padding:8px 8px;text-align:left;border-bottom:2px solid #d7e0ec;font-size:12px}
+table.data td{padding:8px 8px;border-bottom:1px solid #eef1f6;vertical-align:top}
+table.data tr.isnew td{background:#eefbf6}
+table.data tr.isnew td:first-child{font-weight:700}
+.amt{white-space:nowrap;color:#1a3a6b;font-weight:600}
+.close{white-space:nowrap;color:#c0392b;font-weight:600}
+.none{color:#8494a6;font-style:italic;padding:8px 0}
+.foot{color:#8494a6;font-size:11.5px;text-align:center;margin-top:24px}
+.pv{color:#5b6b7e;font-size:12px;margin-top:8px}
+</style>
+</head><body>
+<div class="hdr">
+<div><h1>8월 3일 MICE 및 PCO업계 소식 리포트</h1><div class="date">2026년 8월 3일 (월) · 주말 반영</div><div class="sub">MICE·PCO 업계 아침 브리핑</div></div>
+<div><div class="captop">2026년 8월 MICE 마감 캘린더</div><table class="calmini"><thead><tr><th class="sun">일</th><th>월</th><th>화</th><th>수</th><th>목</th><th>금</th><th class="sat">토</th></tr></thead><tbody><tr><td class="empty"></td><td class="empty"></td><td class="empty"></td><td class="empty"></td><td class="empty"></td><td class="empty"></td><td class="calday sat">1</td></tr><tr><td class="calday sun">2</td><td class="calday today hasev" data-tip="• [입찰 마감] [정정공고] 2026. 진로교육 콘퍼런스 운영 대행 용역
+• [입찰 마감] [RISE사업] 강원RISE 반도체 해외 혁신 포럼 기획 및 운영 용역
+• [입찰 마감] 2026년 경북국제교육포럼 행사 대행 용역(긴급)
+• [입찰 마감] 2026 대한민국 인구포럼 행사 운영 용역
+• [입찰 마감] 유네스코 국제무예센터 10주년 기념 「국제 무예 세미나」 운영 용역
+• [입찰 마감] 2026년 라오스 제품안전관리제도 초청연수 용역
+• [입찰 마감] 2026 전남광주 해외바이어 초청 수출상담회
+• [입찰 마감] 2026 하반기 K-푸드+ 바이어 초청 수출상담회(BKF+) 운영 대행용역
+• [입찰 마감] 2026 제천한방천연물산업박람회 해외바이어 초청 수출상담회 개최사업 운영" title="• [입찰 마감] [정정공고] 2026. 진로교육 콘퍼런스 운영 대행 용역
+• [입찰 마감] [RISE사업] 강원RISE 반도체 해외 혁신 포럼 기획 및 운영 용역
+• [입찰 마감] 2026년 경북국제교육포럼 행사 대행 용역(긴급)
+• [입찰 마감] 2026 대한민국 인구포럼 행사 운영 용역
+• [입찰 마감] 유네스코 국제무예센터 10주년 기념 「국제 무예 세미나」 운영 용역
+• [입찰 마감] 2026년 라오스 제품안전관리제도 초청연수 용역
+• [입찰 마감] 2026 전남광주 해외바이어 초청 수출상담회
+• [입찰 마감] 2026 하반기 K-푸드+ 바이어 초청 수출상담회(BKF+) 운영 대행용역
+• [입찰 마감] 2026 제천한방천연물산업박람회 해외바이어 초청 수출상담회 개최사업 운영">3<span class="evdot">9</span></td><td class="calday hasev" data-tip="• [입찰 마감] 제31회 부산국제영화제 초청 관련 인쇄물 제작 업체 입찰 공고 건
+• [입찰 마감] 의정부 경제자유구역 첨단미래산업 컨퍼런스 대행 용역
+• [입찰 마감] 2027년 SW산업 전망 컨퍼런스 행사운영 용역
+• [입찰 마감] 제12회 글로벌 ICT 리더십 포럼 운영지원
+• [입찰 마감] 2026 AI 안전 정책 글로벌 워크숍 행사 운영
+• [입찰 마감] 2026년도 글로벌 바이오 인력양성허브(GTH-B) 교육사업 행사 기획 및 운영지원(PCO) 용역
+• [입찰 마감] 한불수교 140주년 기념 초청 경북 한지 국제 전시 운영 용역(재)
+• [입찰 마감] 군장대학교 LUPIC사업 「라오스 루앙프라방직업기술대학 교수진·학생 국내초청 단기연수」 용역" title="• [입찰 마감] 제31회 부산국제영화제 초청 관련 인쇄물 제작 업체 입찰 공고 건
+• [입찰 마감] 의정부 경제자유구역 첨단미래산업 컨퍼런스 대행 용역
+• [입찰 마감] 2027년 SW산업 전망 컨퍼런스 행사운영 용역
+• [입찰 마감] 제12회 글로벌 ICT 리더십 포럼 운영지원
+• [입찰 마감] 2026 AI 안전 정책 글로벌 워크숍 행사 운영
+• [입찰 마감] 2026년도 글로벌 바이오 인력양성허브(GTH-B) 교육사업 행사 기획 및 운영지원(PCO) 용역
+• [입찰 마감] 한불수교 140주년 기념 초청 경북 한지 국제 전시 운영 용역(재)
+• [입찰 마감] 군장대학교 LUPIC사업 「라오스 루앙프라방직업기술대학 교수진·학생 국내초청 단기연수」 용역">4<span class="evdot">8</span></td><td class="calday hasev" data-tip="• [사전규격 마감] 2026 한-아세안 보건복지 컨퍼런스 행사 대행 용역
+• [사전규격 마감] 지역외교 글로벌 포럼 운영
+• [사전규격 마감] 제주해녀문화 인류무형문화유산 등재 10주년 기념 포럼 기획 및 운영
+• [사전규격 마감] 2026년 K-유교 국제포럼 행사 대행 용역
+• [사전규격 마감] 「세계인문도시네트워크(WHCN) 총회」 운영 용역
+• [입찰 마감] 2026 한국도핑방지위원회 20주년 기념식 및 국제 도핑방지 세미나 운영대행" title="• [사전규격 마감] 2026 한-아세안 보건복지 컨퍼런스 행사 대행 용역
+• [사전규격 마감] 지역외교 글로벌 포럼 운영
+• [사전규격 마감] 제주해녀문화 인류무형문화유산 등재 10주년 기념 포럼 기획 및 운영
+• [사전규격 마감] 2026년 K-유교 국제포럼 행사 대행 용역
+• [사전규격 마감] 「세계인문도시네트워크(WHCN) 총회」 운영 용역
+• [입찰 마감] 2026 한국도핑방지위원회 20주년 기념식 및 국제 도핑방지 세미나 운영대행">5<span class="evdot">6</span></td><td class="calday hasev" data-tip="• [입찰 마감] 2026년 AI와 프라이버시 국제 컨퍼런스 행사대행 용역
+• [입찰 마감] 2026 도시공간정책 국제컨퍼런스 운영
+• [입찰 마감] 2026 자율주행차 융·복합 미래포럼 운영" title="• [입찰 마감] 2026년 AI와 프라이버시 국제 컨퍼런스 행사대행 용역
+• [입찰 마감] 2026 도시공간정책 국제컨퍼런스 운영
+• [입찰 마감] 2026 자율주행차 융·복합 미래포럼 운영">6<span class="evdot">3</span></td><td class="calday hasev" data-tip="• [입찰 마감] 제1회 공급망정책연구 네트워크 포럼
+• [입찰 마감] 제7차 NIMS-CAMS 국제공동워크숍 행사대행
+• [입찰 마감] 제9회 모의 아프리카연합(AU) 총회 행사운영 용역" title="• [입찰 마감] 제1회 공급망정책연구 네트워크 포럼
+• [입찰 마감] 제7차 NIMS-CAMS 국제공동워크숍 행사대행
+• [입찰 마감] 제9회 모의 아프리카연합(AU) 총회 행사운영 용역">7<span class="evdot">3</span></td><td class="calday sat">8</td></tr><tr><td class="calday sun">9</td><td class="calday hasev" data-tip="• [입찰 마감] 2026년 명사초청 특강 운영을 위한 위탁용역
+• [입찰 마감] 한글점자 반포 100주년 국제컨퍼런스 대행용역 (재공고)
+• [입찰 마감] 한·중 개인정보보호 협력포럼 및 세미나 개최 운영 용역
+• [입찰 마감] 2026 서울국제예술포럼(SAFT 2026) 운영 대행
+• [입찰 마감] 한반도 평화경제 미래비전 국제세미나 위탁용역(긴급)
+• [입찰 마감] 2026 첨단재생의료 글로벌 워크숍 대행
+• [입찰 마감] (NIGT) 아세안 도시고형폐기물 통합관리 역량강화 워크숍 운영
+• [입찰 마감] 경주국제회의복합지구 실감 콘텐츠 개발 및 제작 용역
+• [입찰 마감] KES Match 국내 바이어·투자 및 기술사업화 상담회 운영" title="• [입찰 마감] 2026년 명사초청 특강 운영을 위한 위탁용역
+• [입찰 마감] 한글점자 반포 100주년 국제컨퍼런스 대행용역 (재공고)
+• [입찰 마감] 한·중 개인정보보호 협력포럼 및 세미나 개최 운영 용역
+• [입찰 마감] 2026 서울국제예술포럼(SAFT 2026) 운영 대행
+• [입찰 마감] 한반도 평화경제 미래비전 국제세미나 위탁용역(긴급)
+• [입찰 마감] 2026 첨단재생의료 글로벌 워크숍 대행
+• [입찰 마감] (NIGT) 아세안 도시고형폐기물 통합관리 역량강화 워크숍 운영
+• [입찰 마감] 경주국제회의복합지구 실감 콘텐츠 개발 및 제작 용역
+• [입찰 마감] KES Match 국내 바이어·투자 및 기술사업화 상담회 운영">10<span class="evdot">9</span></td><td class="calday hasev" data-tip="• [입찰 마감] (26G141-I)사이버전콘퍼런스(문제출제)
+• [입찰 마감] 2026 제12회 국제 CSI 컨퍼런스 계약
+• [입찰 마감] 제12차 세계한인정치인포럼 운영
+• [입찰 마감] 2026 대전세계태양광총회 개최 기념 시민 참여 행사 기획 및 운영 대행 용역
+• [입찰 마감] G-FAIR KOREA 2026 수출상담회 통역 및 행사운영 용역
+• [입찰 마감] 제97주년 학생독립운동 기념식 대행용역
+• [입찰 마감] 재생에너지의날 기념식 기획 및 운영 추진" title="• [입찰 마감] (26G141-I)사이버전콘퍼런스(문제출제)
+• [입찰 마감] 2026 제12회 국제 CSI 컨퍼런스 계약
+• [입찰 마감] 제12차 세계한인정치인포럼 운영
+• [입찰 마감] 2026 대전세계태양광총회 개최 기념 시민 참여 행사 기획 및 운영 대행 용역
+• [입찰 마감] G-FAIR KOREA 2026 수출상담회 통역 및 행사운영 용역
+• [입찰 마감] 제97주년 학생독립운동 기념식 대행용역
+• [입찰 마감] 재생에너지의날 기념식 기획 및 운영 추진">11<span class="evdot">7</span></td><td class="calday hasev" data-tip="• [입찰 마감] [긴급] 앵커사업단 아산 스타트업 벤처포럼 프로그램 운영 용역
+• [입찰 마감] IFWY(국제청년포럼) 은평 글로벌 아카데미 및 컨퍼런스 대행 용역
+• [입찰 마감] 2026년 디지털 이코노미 포럼" title="• [입찰 마감] [긴급] 앵커사업단 아산 스타트업 벤처포럼 프로그램 운영 용역
+• [입찰 마감] IFWY(국제청년포럼) 은평 글로벌 아카데미 및 컨퍼런스 대행 용역
+• [입찰 마감] 2026년 디지털 이코노미 포럼">12<span class="evdot">3</span></td><td class="calday hasev" data-tip="• [입찰 마감] 2026 사회참여예술 컨벤션 운영 용역
+• [입찰 마감] 이차전지특성화대학사업단 2026 기업리크루팅 및 현직자직무상담회 행사 용역" title="• [입찰 마감] 2026 사회참여예술 컨벤션 운영 용역
+• [입찰 마감] 이차전지특성화대학사업단 2026 기업리크루팅 및 현직자직무상담회 행사 용역">13<span class="evdot">2</span></td><td class="calday hasev" data-tip="• [입찰 마감] 2026년 기후테크·기후에너지환경 R&amp;D 컨퍼런스(가칭) 기획 및 종합운영
+• [입찰 마감] [앵커사업] 2026년 강원 앵커 지·산·학 파트너스 포럼 기획 및 운영 용역
+• [입찰 마감] 제87회 순국선열의 날 기념식 대행용역" title="• [입찰 마감] 2026년 기후테크·기후에너지환경 R&amp;D 컨퍼런스(가칭) 기획 및 종합운영
+• [입찰 마감] [앵커사업] 2026년 강원 앵커 지·산·학 파트너스 포럼 기획 및 운영 용역
+• [입찰 마감] 제87회 순국선열의 날 기념식 대행용역">14<span class="evdot">3</span></td><td class="calday sat">15</td></tr><tr><td class="calday sun">16</td><td class="calday">17</td><td class="calday">18</td><td class="calday hasev" data-tip="• [입찰 마감] 미륵사지 디지털 건축 학술포럼 및 야외 XR 콘텐츠 시연회 행사 대행 용역
+• [입찰 마감] 민군 우주산업 표준화 포럼 EEE 작업반 26년도 표준안 개발 연구 용역
+• [입찰 마감] (긴급) 요르단 발카대학교 시장기반 직업기술교육 역량강화 사업 국내 초청연수 위탁 용역" title="• [입찰 마감] 미륵사지 디지털 건축 학술포럼 및 야외 XR 콘텐츠 시연회 행사 대행 용역
+• [입찰 마감] 민군 우주산업 표준화 포럼 EEE 작업반 26년도 표준안 개발 연구 용역
+• [입찰 마감] (긴급) 요르단 발카대학교 시장기반 직업기술교육 역량강화 사업 국내 초청연수 위탁 용역">19<span class="evdot">3</span></td><td class="calday hasev" data-tip="• [입찰 마감] 2026년도 고용서비스분야 컨퍼런스(2회) 행사 기획 및 운영" title="• [입찰 마감] 2026년도 고용서비스분야 컨퍼런스(2회) 행사 기획 및 운영">20<span class="evdot">1</span></td><td class="calday">21</td><td class="calday sat">22</td></tr><tr><td class="calday sun">23</td><td class="calday hasev" data-tip="• [입찰 마감] IBK 카드 VIP 초청 문화행사 대행사 선정" title="• [입찰 마감] IBK 카드 VIP 초청 문화행사 대행사 선정">24<span class="evdot">1</span></td><td class="calday">25</td><td class="calday">26</td><td class="calday">27</td><td class="calday">28</td><td class="calday sat">29</td></tr><tr><td class="calday sun">30</td><td class="calday">31</td><td class="empty"></td><td class="empty"></td><td class="empty"></td><td class="empty"></td><td class="empty"></td></tr></tbody></table></div>
+</div>
+<div class="wrap">
+<section class="summary" id="summary"><h2>① 오늘의 요약</h2><ul><li><b>주말 반영</b> — 월요일 기준, 지난 금요일(7/31) 이후 신규 등록 건을 포함했습니다.</li><li><b>사전규격(⑧)</b> 총 5건(<b>신규 5건</b>) — 전건 8/5 마감. 외교부·보건복지부·제주관광공사 등 정부·공공 발주.</li><li><b>입찰정보(⑨)</b> 총 53건(<b>신규 9건</b>) — 8/3~8/4 즉시 마감 임박 다수. 추정가 3억 이하 용역.</li><li><b>낙찰현황(⑦)</b> 이번 달(8/1~8/3) 회원사 신규 낙찰 없음.</li><li><b>업계 동향</b> — 성남 백현마이스·잠실 스포츠MICE 대형 복합개발 진행, 한국 국제회의 개최 세계 2위 유지.</li></ul></section>
+<section id="assoc"><h2>② 협회 소식</h2>
+<h3>한국PCO협회(KAPCO) 공지</h3><ul class="lst"><li><a class="nlink" href="https://kapco.or.kr/news/noticeView.php?idx=3481" target="_blank">[한국PCO협회] 2026 국제회의용역 표준계약서 발주기관 교육 개최 안내</a><span class="dt">2026-07-24</span></li><li><a class="nlink" href="https://kapco.or.kr/news/noticeView.php?idx=3452" target="_blank">[한국PCO협회] 2026년 컨벤션산업 지식재산(IP) 보호 및 관리 컨설팅 안내</a><span class="dt">2026-07</span></li><li><a class="nlink" href="https://kapco.or.kr/news/noticeView.php?idx=3360" target="_blank">[한국PCO협회] 2026 MICE산업 컨벤션기획사 디렉토리 발행 안내</a><span class="dt">2026-07</span></li><li><a class="nlink" href="https://kapco.or.kr/news/noticeView.php?idx=3359" target="_blank">[한국PCO협회] 행사용역 인건비 책정기준(2026년)</a><span class="dt">2026-07</span></li><li><a class="nlink" href="https://kapco.or.kr/news/noticeView.php?idx=3354" target="_blank">[국가데이터처] MICE산업 특수분류 제정 고시(고시 제2025-223호)</a><span class="dt">2026-07</span></li></ul>
+<h3>한국MICE협회(KMA) 공지</h3><ul class="lst"><li><a class="nlink" href="https://www.micekorea.or.kr/page/notice-2" target="_blank">[한국MICE협회] 인크루트 MICE 기업 전문관 오픈 안내</a><span class="dt">2026-07-21</span></li><li><a class="nlink" href="https://www.micekorea.or.kr/page/notice-2" target="_blank">[한국MICE협회] 정부 정책 발표를 사칭한 이메일(악성코드) 주의 안내</a><span class="dt">2026-07-15</span></li><li><a class="nlink" href="https://www.micekorea.or.kr/page/notice-2" target="_blank">[한국MICE협회] 2026년 하반기 관광진흥개발기금 융자 시행 안내</a><span class="dt">2026-06-30</span></li><li><a class="nlink" href="https://www.micekorea.or.kr/page/notice-2" target="_blank">[한국MICE협회] &#x27;KOREA MICE EXPO 2026&#x27; 개최 및 전시부스 참가 안내</a><span class="dt">2026-04-29</span></li></ul></section>
+<section id="member"><h2>③ 회원사 소식</h2>
+<p class="none">금주 KAPCO 이사사·정회원사 관련 신규 공개 소식 없음. (KAPCO 업계소식 최신: 한국서비스산업총연합회 제5·6대 회장 이취임식 — 2026-02-13)</p></section>
+<section id="center"><h2>④ 컨벤션센터 동향</h2><ul class="lst"><li><span class="badge kw">잠실 스포츠·MICE</span>㈜한화 건설부문, 서울시와 &#x27;잠실 스포츠·MICE 복합공간 조성 민간투자사업&#x27; 실시협약 체결(코엑스 운영 참여)</li><li><span class="badge kw">성남 백현마이스</span>6조2천억 규모 &#x27;성남 백현 도시개발(마이스)&#x27; 사업협약 3년 경과, 착공 시점 관심</li><li><span class="badge kw">서울 마곡</span>마곡 MICE 복합단지 내 상업시설·컨벤션 인프라 조성 진행</li></ul>
+<p class="pv">※ 각 센터 개별 전시·행사 일정은 사이트 동적 로딩으로 이번 회차 자동수집이 제한되어, 업계 개발·운영 동향으로 대체했습니다.</p></section>
+<section id="news"><h2>⑤ 뉴스 클리핑<span class="cnt">MICE·마이스·PCO·컨벤션</span></h2><ul class="lst"><li><a class="nlink" href="http://v.daum.net/v/20260803095949690" target="_blank">6조2천억 사업협약 3년 &#x27;성남 백현마이스&#x27;…안팎 우려 &#x27;첫 삽&#x27;은 언제</a> <span class="badge kw">마이스</span></li><li><a class="nlink" href="http://v.daum.net/v/20260701060405942" target="_blank">마이스 강국 韓, 국제회의 개최 &#x27;세계 2위&#x27;…서울은 &#x27;아시아 1위&#x27; 수성</a> <span class="badge kw">PCO</span></li><li><a class="nlink" href="http://v.daum.net/v/20260729060337469" target="_blank">한국마이스관광학회, AI·마이스테크 주제 정책 포럼 개최</a> <span class="badge kw">PCO</span></li><li><a class="nlink" href="http://v.daum.net/v/20260724151102242" target="_blank">군산시, 마이스 얼라이언스 위촉…&quot;민관 공조 신성장&quot;</a> <span class="badge kw">마이스</span></li><li><a class="nlink" href="http://v.daum.net/v/20260803101536490" target="_blank">한화, &#x27;우주의 조약돌&#x27; 컨퍼런스 개최…우주 인재 육성 확대</a> <span class="badge kw">컨벤션</span></li><li><a class="nlink" href="http://v.daum.net/v/20260702174025074" target="_blank">강릉 찾아가는 관광·MICE 설명회 성료</a> <span class="badge kw">MICE</span></li></ul>
+<p class="pv">출처: 다음(Daum) 뉴스 (제목 클릭 시 기사 이동)</p></section>
+<section id="kmice"><h2>⑥ K-MICE 소식</h2>
+<h3>소식·공고</h3><ul class="lst"><li><a class="nlink" href="https://k-mice.visitkorea.or.kr/main.kto?func_name=mainStart" target="_blank">인천관광공사, 「2026 컨벤션 유치 및 개최지원 정기2차」 모집 공고</a></li><li><a class="nlink" href="https://k-mice.visitkorea.or.kr/main.kto?func_name=mainStart" target="_blank">「2026 글로벌 K-컨벤션 육성 사업」 신규 국제회의 선정 결과 공지</a></li></ul>
+<h3>카드뉴스</h3><ul class="lst"><li><a class="nlink" href="https://k-mice.visitkorea.or.kr/main.kto?func_name=mainStart" target="_blank">2026년 대한민국 MICE 산업 트렌드 : T.O.U.C.H</a></li></ul></section>
+<section id="win"><h2>⑦ 회원사 낙찰현황<span class="cnt">KAPCO 51개사 · 나라장터</span></h2><p class="none">이번 달(8/1~8/3, 주말 포함) KAPCO 51개사 신규 낙찰 건이 확인되지 않았습니다.</p></section>
+<section id="spec"><h2><a href="list.html#spec">⑧ 사전규격</a><span class="cnt">배정예산 3억↓ · 총 5건(신규 5)</span></h2>
+<table class="data"><thead><tr><th>사업명</th><th>수요기관</th><th>배정예산</th><th>등록마감</th><th>키워드</th></tr></thead><tbody><tr class="isnew"><td><span class="badge new">NEW</span>2026 한-아세안 보건복지 컨퍼런스 행사 대행 용역</td><td>보건복지부</td><td class="amt">99,820,000</td><td class="close">2026-08-05</td><td><span class="badge kw">컨퍼런스</span></td></tr><tr class="isnew"><td><span class="badge new">NEW</span>지역외교 글로벌 포럼 운영</td><td>외교부</td><td class="amt">179,662,800</td><td class="close">2026-08-05</td><td><span class="badge kw">포럼</span></td></tr><tr class="isnew"><td><span class="badge new">NEW</span>제주해녀문화 인류무형문화유산 등재 10주년 기념 포럼 기획 및 운영</td><td>제주관광공사</td><td class="amt">99,500,000</td><td class="close">2026-08-05</td><td><span class="badge kw">포럼</span></td></tr><tr class="isnew"><td><span class="badge new">NEW</span>2026년 K-유교 국제포럼 행사 대행 용역</td><td>(재)한국유교문화진흥원</td><td class="amt">73,320,000</td><td class="close">2026-08-05</td><td><span class="badge kw">포럼</span></td></tr><tr class="isnew"><td><span class="badge new">NEW</span>「세계인문도시네트워크(WHCN) 총회」 운영 용역</td><td>(재)한국정신문화재단</td><td class="amt">276,000,000</td><td class="close">2026-08-05</td><td><span class="badge kw">총회</span></td></tr></tbody></table>
+<p class="pv"><a class="nlink" href="list.html#spec">전체 5건 보기 →</a></p></section>
+<section id="bid"><h2><a href="list.html#bid">⑨ 입찰정보</a><span class="cnt">추정가 3억↓ · 총 53건(신규 9)</span></h2>
+<table class="data"><thead><tr><th>사업명</th><th>발주기관</th><th>추정가격</th><th>입찰마감</th><th>키워드</th></tr></thead><tbody><tr class="isnew"><td><span class="badge new">NEW</span>[정정공고] 2026. 진로교육 콘퍼런스 운영 대행 용역</td><td>경상남도교육청 경상남도교육청진로교육원</td><td class="amt">176,000,000</td><td class="close">2026-08-03</td><td><span class="badge kw">콘퍼런스</span></td></tr><tr class="isnew"><td><span class="badge new">NEW</span>[RISE사업] 강원RISE 반도체 해외 혁신 포럼 기획 및 운영 용역</td><td>연세대학교 미래캠퍼스</td><td class="amt">22,727,273</td><td class="close">2026-08-03</td><td><span class="badge kw">포럼</span></td></tr><tr class="isnew"><td><span class="badge new">NEW</span>2026년 경북국제교육포럼 행사 대행 용역(긴급)</td><td>경상북도교육청 경상북도교육청연구원</td><td class="amt">63,636,364</td><td class="close">2026-08-03</td><td><span class="badge kw">포럼</span></td></tr><tr class="isnew"><td><span class="badge new">NEW</span>제31회 부산국제영화제 초청 관련 인쇄물 제작 업체 입찰 공고 건</td><td>(사)부산국제영화제</td><td class="amt">35,909,091</td><td class="close">2026-08-04</td><td><span class="badge kw">초청</span></td></tr><tr class="isnew"><td><span class="badge new">NEW</span>2026년 명사초청 특강 운영을 위한 위탁용역</td><td>경상북도교육청 경상북도교육청연수원</td><td class="amt">90,909,091</td><td class="close">2026-08-10</td><td><span class="badge kw">초청</span></td></tr><tr class="isnew"><td><span class="badge new">NEW</span>(26G141-I)사이버전콘퍼런스(문제출제)</td><td>국방부 국군재정관리단</td><td class="amt">81,818,182</td><td class="close">2026-08-11</td><td><span class="badge kw">콘퍼런스</span></td></tr><tr class="isnew"><td><span class="badge new">NEW</span>[긴급] 앵커사업단 아산 스타트업 벤처포럼 프로그램 운영 용역</td><td>호서대학교 산학협력단</td><td class="amt">54,545,455</td><td class="close">2026-08-12</td><td><span class="badge kw">포럼</span></td></tr><tr class="isnew"><td><span class="badge new">NEW</span>2026년 기후테크·기후에너지환경 R&amp;D 컨퍼런스(가칭) 기획 및 종합운영</td><td>한국에너지기술평가원</td><td class="amt">181,818,182</td><td class="close">2026-08-14</td><td><span class="badge kw">컨퍼런스</span></td></tr><tr class="isnew"><td><span class="badge new">NEW</span>[앵커사업] 2026년 강원 앵커 지·산·학 파트너스 포럼 기획 및 운영 용역</td><td>연세대학교 미래캠퍼스</td><td class="amt">43,630,000</td><td class="close">2026-08-14</td><td><span class="badge kw">포럼</span></td></tr><tr><td>2026 대한민국 인구포럼 행사 운영 용역</td><td>(재)CBS</td><td class="amt">136,363,636</td><td class="close">2026-08-03</td><td><span class="badge kw">포럼</span></td></tr><tr><td>유네스코 국제무예센터 10주년 기념 「국제 무예 세미나」 운영 용역</td><td>유네스코국제무예센터</td><td class="amt">45,454,545</td><td class="close">2026-08-03</td><td><span class="badge kw">세미나</span></td></tr><tr><td>2026년 라오스 제품안전관리제도 초청연수 용역</td><td>한국표준협회</td><td class="amt">27,272,727</td><td class="close">2026-08-03</td><td><span class="badge kw">초청연수</span></td></tr><tr><td>2026 전남광주 해외바이어 초청 수출상담회</td><td>(사)한국무역협회 광주전남지부</td><td class="amt">72,727,273</td><td class="close">2026-08-03</td><td><span class="badge kw">초청</span></td></tr><tr><td>2026 하반기 K-푸드+ 바이어 초청 수출상담회(BKF+) 운영 대행용역</td><td>한국농수산식품유통공사</td><td class="amt">222,727,273</td><td class="close">2026-08-03</td><td><span class="badge kw">초청</span></td></tr><tr><td>2026 제천한방천연물산업박람회 해외바이어 초청 수출상담회 개최사업 운영</td><td>(재)충청북도기업진흥원</td><td class="amt">68,636,364</td><td class="close">2026-08-03</td><td><span class="badge kw">초청</span></td></tr></tbody></table>
+<p class="pv"><a class="nlink" href="list.html#bid">전체 53건 보기 →</a></p></section>
+<div class="foot">본 리포트는 KAPCO·KMA·컨벤션센터·다음뉴스·K-MICE·나라장터(KBID) 자료를 자동 수집·정리한 것입니다. · 생성일 2026-08-03</div>
+</div>
+
+<div id="calTip" style="display:none;position:fixed;z-index:9999;max-width:340px;background:#1a3a6b;color:#fff;padding:10px 12px;border-radius:8px;font-size:12px;line-height:1.5;white-space:pre-line;box-shadow:0 6px 20px rgba(0,0,0,.25)"></div>
 <script>
-document.querySelectorAll('.calday').forEach(function(el){
-  el.addEventListener('mouseenter',function(e){
-    var t=document.getElementById('calTip');
-    t.textContent=el.getAttribute('data-tip');
-    t.style.display='block';
-  });
-  el.addEventListener('mousemove',function(e){
-    var t=document.getElementById('calTip');
-    t.style.left=(e.clientX+14)+'px'; t.style.top=(e.clientY+14)+'px';
-  });
-  el.addEventListener('mouseleave',function(){document.getElementById('calTip').style.display='none';});
-});
+(function(){
+ var tip=document.getElementById('calTip');
+ document.querySelectorAll('.calday.hasev').forEach(function(td){
+   td.addEventListener('mouseenter',function(e){ tip.textContent=td.getAttribute('data-tip'); tip.style.display='block'; });
+   td.addEventListener('mousemove',function(e){ var x=e.clientX+14,y=e.clientY+14; if(x+340>window.innerWidth)x=e.clientX-354; tip.style.left=x+'px'; tip.style.top=y+'px'; });
+   td.addEventListener('mouseleave',function(){ tip.style.display='none'; });
+ });
+})();
 </script>
+
 </body></html>
