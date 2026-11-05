@@ -1,0 +1,66 @@
+name: MICE·PCO 데일리 브리프 (PC 미가동 대체 실행)
+
+on:
+  schedule:
+    - cron: '30 0 * * 1-5'   # 평일 09:30 KST (GitHub 사정으로 지연될 수 있음)
+  workflow_dispatch:
+    inputs:
+      mode:
+        description: 'auto=오늘 게시본 없을 때만 / force=무조건 생성·게시·발송 / test=생성 후 테스트 메일만'
+        default: test
+        type: choice
+        options: [test, auto, force]
+
+permissions:
+  contents: write
+  pages: write
+
+concurrency:
+  group: mice-daily
+  cancel-in-progress: false
+
+jobs:
+  report:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    env:
+      TZ: Asia/Seoul
+      MODE: ${{ github.event.inputs.mode || 'auto' }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Install mailer
+        run: npm install --no-save --no-package-lock nodemailer@6
+        working-directory: cloud
+      - name: Build report
+        id: build
+        run: node cloud/daily.mjs
+        env:
+          DATA_GO_KR_KEY: ${{ secrets.DATA_GO_KR_KEY }}
+      - name: Publish (commit index.html, list.html)
+        if: steps.build.outputs.skip != 'true' && env.MODE != 'test'
+        run: |
+          git config user.name "mice-report-bot"
+          git config user.email "mice-report-bot@users.noreply.github.com"
+          git add index.html list.html
+          git diff --cached --quiet && echo "변경 없음" || git commit -m "MICE·PCO 데일리 리포트 ${{ steps.build.outputs.date }} (서버 자동 생성)"
+          git push
+          curl -s -X POST -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" -H "Accept: application/vnd.github+json" \
+            https://api.github.com/repos/${{ github.repository }}/pages/builds || true
+          for i in $(seq 1 18); do
+            if curl -s "https://atomice-world.github.io/mice-report/?v=$(date +%s)" | grep -q "기준일 ${{ steps.build.outputs.date }}"; then echo "사이트 반영 확인"; break; fi
+            sleep 10
+          done
+      - name: Send mail
+        if: steps.build.outputs.skip != 'true'
+        run: node cloud/send_mail.mjs
+        env:
+          NODE_PATH: cloud/node_modules
+          SMTP_HOST: ${{ secrets.SMTP_HOST }}
+          SMTP_PORT: ${{ secrets.SMTP_PORT }}
+          SMTP_USER: ${{ secrets.SMTP_USER }}
+          SMTP_PASS: ${{ secrets.SMTP_PASS }}
+          MAIL_TO: mice@atomice.co.kr
+          TEST_TO: ${{ secrets.TEST_TO }}
