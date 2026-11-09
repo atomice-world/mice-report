@@ -1,0 +1,78 @@
+name: 음성 브리핑 MP3 (AI 낭독)
+
+on:
+  push:
+    branches: [main]
+    paths: ['index.html', 'cloud/voice/**', '.github/workflows/voice-briefing.yml']
+  workflow_run:
+    workflows: ['MICE·PCO 데일리 브리프 (PC 미가동 대체 실행)']
+    types: [completed]
+  workflow_dispatch:
+    inputs:
+      voice:
+        description: '음성 (F1~F5 여성, M1~M5 남성). 비우면 cloud/voice/config.json'
+        default: ''
+      samples:
+        description: '10개 음성 샘플도 만들기'
+        type: boolean
+        default: false
+
+permissions:
+  contents: write
+  pages: write
+
+concurrency:
+  group: voice-briefing
+  cancel-in-progress: true
+
+jobs:
+  tts:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    env:
+      TZ: Asia/Seoul
+      VOICE: ${{ github.event.inputs.voice }}
+      ST_REV: aafc6e32416a594460b32413efc49d7fe4ce6d46
+      ST_SRC_SHA: 1e9799e964ea4c0dad7cde993b65c3c813a7b373
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Cache Supertonic model
+        uses: actions/cache@v4
+        with:
+          path: st_assets
+          key: supertonic3-${{ env.ST_REV }}
+      - name: Install
+        run: |
+          git clone --quiet https://github.com/supertone-oss-archive/supertonic.git st_src
+          git -C st_src checkout --quiet $ST_SRC_SHA
+          pip install --quiet -r st_src/py/requirements.txt huggingface_hub
+          if [ ! -d st_assets/onnx ]; then
+            python -c "from huggingface_hub import snapshot_download; snapshot_download('supertone-oss-archive/supertonic-3', revision='$ST_REV', local_dir='st_assets')"
+          fi
+          command -v ffmpeg || (sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg)
+          npm install --no-save --no-package-lock --silent jsdom@24
+      - name: Build narration segments
+        run: node cloud/voice/segments.mjs index.html > /tmp/segs.json && head -c 600 /tmp/segs.json
+      - name: Synthesize brief.mp3
+        run: python cloud/voice/synth.py /tmp/segs.json
+      - name: Voice samples
+        if: github.event.inputs.samples == 'true'
+        run: python cloud/voice/synth.py --samples
+      - name: Commit audio
+        run: |
+          git config user.name "mice-voice-bot"
+          git config user.email "mice-voice-bot@users.noreply.github.com"
+          git add audio
+          if git diff --cached --quiet; then echo "변경 없음"; exit 0; fi
+          git commit -q -m "음성 브리핑 MP3 $(jq -r .date audio/brief.json) ($(jq -r .voice audio/brief.json))"
+          for i in 1 2 3; do git pull -q --rebase origin main && git push -q && break; sleep 5; done
+          curl -s -X POST -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" -H "Accept: application/vnd.github+json" \
+            https://api.github.com/repos/${{ github.repository }}/pages/builds || true
