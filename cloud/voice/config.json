@@ -1,6 +1,6 @@
 {
-  "voice": "F1",
-  "speed": 1.0,
+  "voice": "M5",
+  "speed": 1,
   "steps": 10,
   "gap": 0.45,
   "note": "voice: F1~F5(여성), M1~M5(남성). 샘플은 https://atomice-world.github.io/mice-report/audio/samples.html"
