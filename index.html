@@ -178,7 +178,8 @@ a{color:#1a56db;text-decoration:none;}
   }
   function confetti() {
     if (window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-    var cv = document.createElement('canvas'), W = cv.width = innerWidth, H = cv.height = innerHeight, ctx = cv.getContext('2d');
+    var cv = document.createElement('canvas'), W = cv.width = innerWidth, H = cv.height = innerHeight, ctx = cv.getContext && cv.getContext('2d');
+    if (!ctx) return;
     cv.style.cssText = 'position:fixed;inset:0;pointer-events:none;z-index:9999'; document.body.appendChild(cv);
     var C = ['#ffce6a', '#e11d48', '#0f766e', '#1a56db', '#f97316', '#a855f7'], P = [];
     for (var i = 0; i < 160; i++) P.push({ x: W / 2 + (Math.random() - 0.5) * W * 0.3, y: H * 0.35, vx: (Math.random() - 0.5) * 14, vy: -Math.random() * 13 - 4, s: 5 + Math.random() * 6, r: Math.random() * 6, vr: (Math.random() - 0.5) * 0.3, c: C[i % C.length] });
@@ -210,7 +211,36 @@ a{color:#1a56db;text-decoration:none;}
     curEl = el; if (!el) return; el.classList.add('tts-on');
     var r = el.getBoundingClientRect(); if (r.top < 70 || r.bottom > window.innerHeight - 20) el.scrollIntoView({ block: 'center', behavior: 'smooth' });
   }
+  // ---------- AI 낭독 MP3 (GitHub Actions가 Supertonic으로 생성: audio/brief.json + audio/brief.mp3) ----------
+  function hashStr(s) { var h = 5381; for (var i = 0; i < s.length; i++) h = ((h << 5) + h + s.charCodeAt(i)) | 0; return (h >>> 0).toString(16); }
+  var segHash = hashStr(segs.map(function (s) { return s.text; }).join('\n'));
+  var A = null, man = null, mp3 = false, fin = false;
+  function segAt(t) { var m = man.segs, i = 0; while (i + 1 < m.length && m[i + 1].start <= t + 0.05) i++; return i; }
+  function mp3End() { return $('tts-mode').value === 'brief' ? man.segs[briefEnd - 1].end + 0.2 : 1e9; }
+  function fmt(t) { t = Math.max(0, Math.floor(t)); return Math.floor(t / 60) + ':' + ('0' + (t % 60)).slice(-2); }
+  function initMp3(m) {
+    if (!m || m.hash !== segHash || !m.segs || m.segs.length !== segs.length || !window.Audio) return;
+    man = m; A = new Audio(m.file + '?v=' + m.hash); A.preload = 'metadata'; mp3 = true;
+    if (!LS.getItem('ttsRate')) { rate = 1; rs.value = '1'; }
+    $('tts-voice').style.display = 'none';
+    A.ontimeupdate = function () {
+      if (!playing) return; var t = A.currentTime; mark(segs[segAt(t)].el);
+      if (t >= mp3End()) { A.pause(); playing = false; fin = true; mark(null); ui(); $('tts-status').textContent = '브리핑을 마쳤습니다'; return; }
+      $('tts-status').textContent = '🎙 AI 낭독 ' + fmt(t) + ' / ' + fmt(Math.min(mp3End(), m.duration));
+    };
+    A.onended = function () { playing = false; fin = true; mark(null); ui(); $('tts-status').textContent = '브리핑을 마쳤습니다'; };
+    A.onerror = function () { mp3 = false; A = null; playing = false; $('tts-voice').style.display = ''; pickVoice(); ui(); };
+    ui();
+  }
+  if (window.fetch) fetch('audio/brief.json?v=' + Date.now()).then(function (r) { return r.ok ? r.json() : null; }).then(initMp3).catch(function () {});
+
   function ui() {
+    if (mp3) {
+      var started = A.currentTime > 0.3 && !fin;
+      $('tts-play').textContent = playing ? '⏸ 일시정지' : (started ? '▶ 이어 듣기' : '▶ 음성 브리핑 듣기');
+      if (!playing) $('tts-status').textContent = started ? '🎙 AI 낭독 일시정지 ' + fmt(A.currentTime) : '🎙 AI 낭독 준비됨';
+      return;
+    }
     $('tts-play').textContent = playing ? '⏸ 일시정지' : (pos > 0 && pos < end ? '▶ 이어 듣기' : '▶ 음성 브리핑 듣기');
     $('tts-status').textContent = playing ? '읽는 중 ' + Math.min(pos + 1, end) + ' / ' + end : (pos >= end ? '끝까지 들었습니다' : '');
   }
@@ -230,13 +260,35 @@ a{color:#1a56db;text-decoration:none;}
     keep = [u]; S.speak(u);
   }
   function play(fromSeg, full) {
-    token++; S.cancel();
-    if (typeof fromSeg === 'number') { pos = firstChunkOf(fromSeg); end = full === false ? briefEndChunk : chunks.length; $('tts-mode').value = full === false ? 'brief' : 'full'; }
+    token++;
+    if (typeof fromSeg === 'number') $('tts-mode').value = full === false ? 'brief' : 'full';
+    if (mp3) {
+      if (typeof fromSeg === 'number') A.currentTime = man.segs[fromSeg].start;
+      else if (fin || A.currentTime >= mp3End()) A.currentTime = 0;
+      fin = false; A.playbackRate = rate;
+      var w = (cel && !celebrated && A.currentTime < man.segs[Math.min(1, segs.length - 1)].start + 0.1) ? (celebrate() || 0) : 0;
+      playing = true; ui(); var tk = token;
+      setTimeout(function () {
+        if (tk !== token || !playing) return;
+        var p = A.play(); if (p && p.catch) p.catch(function () { playing = false; ui(); $('tts-status').textContent = '▶ 버튼을 눌러 재생해 주세요'; });
+      }, w);
+      return;
+    }
+    S.cancel();
+    if (typeof fromSeg === 'number') { pos = firstChunkOf(fromSeg); end = full === false ? briefEndChunk : chunks.length; }
     var wait = 60; if (cel && !celebrated && pos <= firstChunkOf(1)) wait = celebrate() || 60;
     playing = true; ui(); var t = token; setTimeout(function () { speakNext(t); }, wait);
   }
-  function stop(reset) { token++; S.cancel(); playing = false; if (reset) { pos = 0; mark(null); } ui(); }
+  function stop(reset) {
+    token++; playing = false;
+    if (mp3) { A.pause(); if (reset) { A.currentTime = 0; fin = false; mark(null); } ui(); return; }
+    S.cancel(); if (reset) { pos = 0; mark(null); } ui();
+  }
   function jump(dir) {
+    if (mp3) {
+      var ti = segAt(A.currentTime) + dir; ti = Math.max(0, Math.min(segs.length - 1, ti));
+      A.currentTime = man.segs[ti].start; fin = false; mark(segs[ti].el); if (!playing) ui(); return;
+    }
     var seg = chunks[Math.min(pos, chunks.length - 1)].seg, target = seg + dir;
     if (target < 0) target = 0; if (target >= segs.length) target = segs.length - 1;
     var was = playing; pos = firstChunkOf(target); if (was) play(); else { mark(segs[target].el); ui(); }
@@ -244,6 +296,7 @@ a{color:#1a56db;text-decoration:none;}
 
   $('tts-play').onclick = function () {
     if (playing) { stop(false); return; }
+    if (mp3) { if (fin || A.currentTime < 0.3) play(0, $('tts-mode').value !== 'brief'); else play(); return; }
     if (pos >= end || pos === 0) { var full = $('tts-mode').value !== 'brief'; play(0, full); } else play();
   };
   $('tts-stop').onclick = function () { stop(true); };
@@ -251,9 +304,9 @@ a{color:#1a56db;text-decoration:none;}
   $('tts-next').onclick = function () { jump(1); };
   $('tts-mode').onchange = function () { var full = this.value !== 'brief'; end = full ? chunks.length : briefEndChunk; if (pos >= end) pos = 0; ui(); };
   var rs = $('tts-rate'); rs.value = String(rate); if (rs.value !== String(rate)) { rate = 1.1; rs.value = '1.1'; }
-  rs.onchange = function () { rate = parseFloat(this.value); LS.setItem('ttsRate', this.value); if (playing) play(); };
+  rs.onchange = function () { rate = parseFloat(this.value); LS.setItem('ttsRate', this.value); if (mp3) { A.playbackRate = rate; return; } if (playing) play(); };
   $('tts-voice').onchange = function () { LS.setItem('ttsVoice', this.value); pickVoice(); if (playing) play(); };
-  window.addEventListener('beforeunload', function () { S.cancel(); });
+  window.addEventListener('beforeunload', function () { S.cancel(); if (A) A.pause(); });
   document.addEventListener('keydown', function (e) {
     if (e.target && /INPUT|SELECT|TEXTAREA/.test(e.target.tagName)) return;
     if (e.code === 'Space' && !e.repeat) { e.preventDefault(); $('tts-play').click(); }
@@ -269,9 +322,9 @@ a{color:#1a56db;text-decoration:none;}
     };
     document.addEventListener('pointerdown', once, true); document.addEventListener('keydown', once, true);
     var cb = document.getElementById('cel-play');
-    if (cb) cb.onclick = function () { stop(true); celebrated = false; $('tts-mode').value = 'brief'; end = briefEndChunk; pos = firstChunkOf(1); play(); };
+    if (cb) cb.onclick = function () { stop(true); celebrated = false; $('tts-mode').value = 'brief'; end = briefEndChunk; if (mp3) { play(1, false); return; } pos = firstChunkOf(1); play(); };
   }
-  window.miceTTS = { segs: segs, chunks: chunks, play: play, stop: stop };
+  window.miceTTS = { segs: segs, chunks: chunks, play: play, stop: stop, hash: segHash, briefEnd: briefEnd, isMp3: function () { return mp3; } };
   ui(); if (location.hash === '#listen') $('tts-status').textContent = '▶ 버튼을 누르면 오늘 브리핑을 읽어 드립니다';
 })();
 </script></body></html>
