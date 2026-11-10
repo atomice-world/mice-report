@@ -38,8 +38,8 @@ globalThis.miceG2BApi = (() => {
   async function pool(tasks, conc = 6) { const out = new Array(tasks.length); let i = 0; const errs = [];
     await Promise.all(Array.from({ length: conc }, async () => { while (i < tasks.length) { const k = i++; try { out[k] = await tasks[k](); } catch (e) { errs.push(e.message); out[k] = null; } } }));
     return { out, errs }; }
-  // 조회기간 1개월 제한 → 구간 분할
-  const windows = (now, days, span = 28) => { const w = []; for (let s = days; s > 0; s -= span) w.push([addDays(now, -s), addDays(now, -Math.max(0, s - span))]); return w; };
+  // 조회기간 제한(2026-11-11부터 7일 초과 시 07 에러) → 6일 구간 분할
+  const windows = (now, days, span = 6) => { const w = []; for (let s = days; s > 0; s -= span) w.push([addDays(now, -s), addDays(now, -Math.max(0, s - span))]); return w; };
 
   async function collect(opts = {}) {
     const now = opts.now || new Date(); CALLS = 0;
@@ -79,7 +79,7 @@ globalThis.miceG2BApi = (() => {
         published: pub ? mmdd(pub).replace('-', '/') : '', publishedISO: pub?.toISOString() || null, bfSpecRegNo: x.bfSpecRgstNo, status: '', kw: x._kw, tier: tierOf(name) }); }
     prespecs.sort((a, b) => (b.publishedISO || '').localeCompare(a.publishedISO || ''));
     // ---------- 최종낙찰자 (용역, 최근 winDays 개찰) ----------
-    r = await pool(KWS.map(kw => async () => ({ kw, ...(await call(WIN + '/getScsbidListSttusServcPPSSrch', { inqryDiv: '2', inqryBgnDt: stamp(addDays(now, -(opts.winDays || 10))), inqryEndDt: stamp(now, true), bidNtceNm: kw })) })));
+    r = await pool(KWS.map(kw => async () => ({ kw, ...(await call(WIN + '/getScsbidListSttusServcPPSSrch', { inqryDiv: '2', inqryBgnDt: stamp(addDays(now, -(opts.winDays || 6))), inqryEndDt: stamp(now, true), bidNtceNm: kw })) })));
     errors.push(...r.errs);
     const wmap = new Map(); for (const res of r.out) for (const x of res?.items || []) { const k = x.bidNtceNo + '-' + x.bidNtceOrd; if (!wmap.has(k)) wmap.set(k, x); }
     const wl = [...wmap.values()].filter(x => tierOf(x.bidNtceNm || '') !== 'event' || opts.allWins);
