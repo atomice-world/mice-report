@@ -196,7 +196,27 @@ ${h3(`⑨ 3억 이하 입찰정보 (신규 ${d.counts.newBids}건${d.counts.chan
       await gh.locator('button:has-text("Commit changes")').first().click();
       await sleep(4000);
     } finally { await closeTab(gh).catch(() => {}); }
-    const c = await (await fetch(`https://api.github.com/repos/${REPO}/commits?per_page=1`)).json();
+    let c = await (await fetch(`https://api.github.com/repos/${REPO}/commits?per_page=1&v=${Date.now()}`)).json();
+    // 업로드 페이지가 'Something went really wrong'으로 실패하는 날(2026-11-17) 대비: 편집 페이지(CodeMirror)로 파일별 커밋
+    if (!String(c[0]?.commit?.message || '').includes(d.date)) {
+      for (const f of ['list.html', 'index.html']) {
+        const txt = await fs.readFile(path.join(outDir, f), 'utf8');
+        const ed = await openTab(`https://github.com/${REPO}/edit/main/${f}`);
+        try {
+          await ed.waitForSelector('.cm-content', { timeout: 20000 });
+          await ed.bringToFront();
+          const bb = await ed.locator('.cm-content').first().boundingBox();
+          await ed.mouse.click(bb.x + 200, bb.y + 100); await sleep(300);
+          await ed.keyboard.press('Control+A'); await ed.keyboard.press('Backspace'); await sleep(300);
+          await ed.keyboard.insertText(txt); await sleep(2000);
+          await ed.getByRole('button', { name: 'Commit changes...' }).click(); await sleep(3000);
+          const dlg = ed.getByRole('dialog', { name: 'Commit changes' });
+          await dlg.getByRole('textbox', { name: 'Commit message' }).fill(`MICE·PCO 데일리 리포트 ${d.date}${f === 'list.html' ? ' (list)' : ''}`);
+          await dlg.getByRole('button', { name: 'Commit changes' }).click(); await sleep(4000);
+        } finally { await closeTab(ed).catch(() => {}); }
+      }
+      c = await (await fetch(`https://api.github.com/repos/${REPO}/commits?per_page=1&v=${Date.now()}`)).json();
+    }
     let live = false; for (let i = 0; i < 9 && !live; i++) { const t = await (await fetch(SITE + '?v=' + Date.now())).text(); live = t.includes(`기준일 ${d.date}`); if (!live) await sleep(10000); }
     return { sha: c[0]?.sha?.slice(0, 7), message: c[0]?.commit?.message, live };
   }
