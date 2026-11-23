@@ -54,7 +54,7 @@ a{color:#1a56db;text-decoration:none;}
     const cells = r => [...r.matchAll(/<td>([\s\S]*?)<\/td>/g)].map(m => m[1]);
     const strip = s => unesc(String(s).replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').trim());
     const bids = rows(sec('bid')).map(r => { const c = cells(r); const m = r.match(/bidPbancNo=([^&"]+)&(?:amp;)?bidPbancOrd=(\d+)/) || [];
-      return { no: m[1], ord: m[2], name: strip((c[0] || '').replace(/<span[\s\S]*?<\/span>/g, '')), org: strip(c[1]), price: strip(c[2]), deadline: strip(c[3]).slice(0, 11), event: parseEvt(r) }; }).filter(b => b.no);
+      return { no: m[1], ord: m[2], name: strip((c[0] || '').replace(/<span[\s\S]*?<\/span>/g, '')), org: strip(c[1]), price: strip(c[2]), deadline: strip(c[3]).slice(0, 11), event: parseEvt(r), flag: /class='today'>경계/.test(r) ? '경계' : '' }; }).filter(b => b.no);
     const prespecs = rows(sec('spec')).map(r => { const c = cells(r); const no = (r.match(/R\d\dBD\d+/) || [])[0];
       return no ? { no, name: strip((c[0] || '').split('<br>')[0].replace(/<span[\s\S]*?<\/span>/g, '')), org: strip(c[1]), amount: strip(c[2]), deadline: strip(c[3]), flag: /class='today'>경계/.test(r) ? '경계' : '', event: parseEvt(r) } : null; }).filter(Boolean);
     const wins = rows(sec('win')).map(r => { const c = cells(r); const m = r.match(/bidPbancNo=([^&"]+)&(?:amp;)?bidPbancOrd=(\d+)/) || [];
@@ -84,7 +84,7 @@ a{color:#1a56db;text-decoration:none;}
       if (deadline !== '확인 필요' && deadline.slice(0, 5) < today) continue;
       const isNew = !p && b.postedISO && new Date(b.postedISO) >= prevCut;
       const changed = p && (p.ord !== b.bidPbancOrd || (b.deadline && p.deadline && p.deadline !== b.deadline));
-      const row = { ...b, event: b.event || (p && !changed ? p.event : null) || undefined, deadline, isNew, changed, oldDeadline: changed && p.deadline !== deadline ? p.deadline : '', today: deadline.slice(0, 5) === today };
+      const row = { ...b, flag: (ed.flags || {})[b.bidPbancNo] ?? p?.flag ?? '', event: b.event || (p && !changed ? p.event : null) || undefined, deadline, isNew, changed, oldDeadline: changed && p.deadline !== deadline ? p.deadline : '', today: deadline.slice(0, 5) === today };
       if (!p && !isNew) missed.push(row);
       bids.push(row);
     }
@@ -119,7 +119,7 @@ a{color:#1a56db;text-decoration:none;}
   // ---------- 렌더 ----------
   const badge = (cls, t) => ` <span class='${cls}'>${t}</span>`;
   function bidRow(b) {
-    return `<tr${b.isNew ? " class='rowbid'" : ''}><td><a href="${b.url || g2bUrl(b.bidPbancNo, b.bidPbancOrd)}" target="_blank">${esc(b.name)}</a>${b.isNew ? badge('new', 'NEW') : ''}${b.changed ? badge('chg', '변경공고') : ''}${b.today ? badge('today', '오늘 마감') : ''}${evtHtml(b)}</td><td>${esc(b.org)}</td><td>${esc(b.prspPrce)}</td><td>${esc(b.deadline)}${b.oldDeadline ? ` (${esc(b.oldDeadline.slice(0, 5))}→)` : ''}</td></tr>`;
+    return `<tr${b.isNew ? " class='rowbid'" : ''}><td><a href="${b.url || g2bUrl(b.bidPbancNo, b.bidPbancOrd)}" target="_blank">${esc(b.name)}</a>${b.isNew ? badge('new', 'NEW') : ''}${b.changed ? badge('chg', '변경공고') : ''}${b.flag ? badge('today', esc(b.flag)) : ''}${b.today ? badge('today', '오늘 마감') : ''}${evtHtml(b)}</td><td>${esc(b.org)}</td><td>${esc(b.prspPrce)}</td><td>${esc(b.deadline)}${b.oldDeadline ? ` (${esc(b.oldDeadline.slice(0, 5))}→)` : ''}</td></tr>`;
   }
   const bidTable = rows => `<table><tr><th>공고명</th><th>발주기관</th><th>추정가격</th><th>입찰마감</th></tr>${rows.map(bidRow).join('')}</table>`;
   const specTable = rows => rows.length ? `<table><tr><th>사전규격명</th><th>발주기관</th><th>배정예산</th><th>의견마감</th></tr>${rows.map(s => `<tr${s.isNew ? " class='rowbid'" : ''}><td>${s.bfSpecRegNo ? `<a href="${specUrl(s.bfSpecRegNo)}" target="_blank">${esc(s.name)}</a>` : esc(s.name)}${s.isNew ? badge('new', 'NEW') : ''}${s.flag ? badge('today', esc(s.flag)) : ''}${s.today ? badge('today', '오늘 마감') : ''}<br><span class='note'>사전규격번호 ${s.bfSpecRegNo} · 공개 ${esc(s.published)}</span>${evtHtml(s)}</td><td>${esc(s.org)}</td><td>${esc(s.amount)}</td><td>${esc(s.opinionDeadline)}</td></tr>`).join('')}</table>` : `<p style='font-size:13.5px;'>조건을 충족하는 사전규격이 없습니다 (0건).</p>`;
@@ -174,7 +174,7 @@ ${h3('📅 MICE 캘린더 (주요 일정)')}${tbl(['기간', '분야', '행사�
 ${h3('⑦ 회원사 낙찰현황 (주요)')}${tbl(['수주사', '용역명', '발주기관', '낙찰금액'], d.wins.slice(0, 6).map(w => `<tr>${td(esc(w.winner) + (w.mine ? B('#0f766e', '자사') : '') + (w.isNew ? B('#e11d48', 'NEW') : ''))}${td(w.url ? a(w.url, esc(w.name)) : esc(w.name))}${td(esc(w.org))}${td(esc(w.amount))}</tr>`))}
 <p style="font-size:11px;color:#667">※ 협상에 의한 계약은 낙찰금액이 비공개여서 배정예산과 사업금액(추정가격+부가세) 중 더 큰 금액으로 표시합니다. ${ed.winsNote || ''}</p>
 ${h3(`⑧ 3억 이하 사전규격 (${d.counts.specs}건, 신규 ${d.counts.newSpecs}건)`)}${d.prespecs.length ? tbl(['사전규격명', '발주기관', '배정예산', '의견마감'], d.prespecs.map(s => `<tr${s.isNew ? ' ' + hl : ''}>${td((s.bfSpecRegNo ? a(specUrl(s.bfSpecRegNo), esc(s.name)) : esc(s.name)) + (s.isNew ? B('#e11d48', 'NEW') : '') + (s.flag ? B('#475569', esc(s.flag)) : '') + (r => r.event ? `<br><span style="color:#0f766e;font-size:11.5px;font-weight:bold">📅 행사 예정 ${esc(r.event.label)}</span>` : '')(s))}${td(esc(s.org))}${td(esc(s.amount.replace(', VAT포함', '')))}${td(esc(s.opinionDeadline))}</tr>`)) : '<p style="font-size:13px">조건을 충족하는 건 없음 (0건)</p>'}
-${h3(`⑨ 3억 이하 입찰정보 (신규 ${d.counts.newBids}건${d.counts.changed ? `, 변경 ${d.counts.changed}건` : ''})`)}${newBids.length ? tbl(['공고명', '발주기관', '추정가격', '입찰마감'], newBids.map(b => `<tr${b.isNew ? ' ' + hl : ''}>${td(a(b.url || g2bUrl(b.bidPbancNo, b.bidPbancOrd), esc(b.name)) + (b.isNew ? B('#e11d48', 'NEW') : '') + (b.changed ? B('#b45309', '변경공고') : '') + (r => r.event ? `<br><span style="color:#0f766e;font-size:11.5px;font-weight:bold">📅 행사 예정 ${esc(r.event.label)}</span>` : '')(b))}${td(esc(b.org))}${td(esc(b.prspPrce))}${td(esc(b.deadline) + (b.today ? ' (오늘)' : '') + (b.oldDeadline ? ` (${esc(b.oldDeadline.slice(0, 5))}→)` : ''))}</tr>`)) : '<p style="font-size:13px">신규 공고 없음</p>'}
+${h3(`⑨ 3억 이하 입찰정보 (신규 ${d.counts.newBids}건${d.counts.changed ? `, 변경 ${d.counts.changed}건` : ''})`)}${newBids.length ? tbl(['공고명', '발주기관', '추정가격', '입찰마감'], newBids.map(b => `<tr${b.isNew ? ' ' + hl : ''}>${td(a(b.url || g2bUrl(b.bidPbancNo, b.bidPbancOrd), esc(b.name)) + (b.isNew ? B('#e11d48', 'NEW') : '') + (b.changed ? B('#b45309', '변경공고') : '') + (b.flag ? B('#475569', esc(b.flag)) : '') + (r => r.event ? `<br><span style="color:#0f766e;font-size:11.5px;font-weight:bold">📅 행사 예정 ${esc(r.event.label)}</span>` : '')(b))}${td(esc(b.org))}${td(esc(b.prspPrce))}${td(esc(b.deadline) + (b.today ? ' (오늘)' : '') + (b.oldDeadline ? ` (${esc(b.oldDeadline.slice(0, 5))}→)` : ''))}</tr>`)) : '<p style="font-size:13px">신규 공고 없음</p>'}
 <p style="font-size:13.5px">⑨ 입찰정보: 전체 ${d.bids.length}건 — ${a(SITE + 'list.html#bid', '전체 보기 →')}</p>
 <p style="font-size:11px;color:#889;margin-top:28px">㈜아토마이스 재경 · MICE·PCO 업계 일일 리포트 자동 생성</p></div>`;
   }
@@ -195,7 +195,7 @@ ${h3(`⑨ 3억 이하 입찰정보 (신규 ${d.counts.newBids}건${d.counts.chan
       await gh.locator('#commit-summary-input, input[name="commit_title"], [placeholder="Add files via upload"]').first().fill(`MICE·PCO 데일리 리포트 ${d.date}`);
       await gh.locator('button:has-text("Commit changes")').first().click();
       await sleep(4000);
-    } finally { await closeTab(gh).catch(() => {}); }
+    } catch (e) { console.log('업로드 페이지 실패 → 편집 페이지 폴백:', e.message); } finally { await closeTab(gh).catch(() => {}); }
     let c = await (await fetch(`https://api.github.com/repos/${REPO}/commits?per_page=1&v=${Date.now()}`)).json();
     // 업로드 페이지가 'Something went really wrong'으로 실패하는 날(2026-11-17) 대비: 편집 페이지(CodeMirror)로 파일별 커밋
     if (!String(c[0]?.commit?.message || '').includes(d.date)) {
