@@ -339,5 +339,10 @@
   "필릭플랜",
   "아이폴플러스"
  ],
- "notMembersChecked": []
+ "notMembersChecked": [],
+ "keepAlways": [
+  "아토마이스",
+  "에이엔이광개토"
+ ],
+ "keepAlwaysNote": "협회 홈페이지·디렉토리에 없어도 항상 유지(사용자 지시 2026-11-25). 회원사 목록 갱신 시 삭제 금지."
 }
