@@ -28,7 +28,8 @@ const prev = await miceReport.loadPrev();
 
 // ---------- 나라장터 (공식 OpenAPI) ----------
 let g2b = null;
-try { g2b = await miceG2BApi.collect({ now }); console.log('G2B', g2b.stats); if (g2b.stats.errors?.length && !g2b.bids.length) throw new Error(g2b.stats.errors[0]); }
+const membersForWins = JSON.parse(await fsp.readFile(new URL('./kapco_members.json', import.meta.url), 'utf8')).members;
+try { g2b = await miceG2BApi.collect({ now, members: membersForWins }); console.log('G2B', g2b.stats); if (g2b.stats.errors?.length && !g2b.bids.length) throw new Error(g2b.stats.errors[0]); }
 catch (e) { notes.push(`나라장터 API 조회 실패(${e.message}) — ⑦⑧⑨는 전일 목록 기준`); g2b = null; }
 if (!g2b) g2b = { bids: [], wins: [], prespecs: (prev.prespecs || []).filter(s => (s.deadline || '') >= T.md).map(s => ({ name: s.name, org: s.org, amount: s.amount, opinionDeadline: s.deadline, bfSpecRegNo: s.no, published: '', tier: 'core' })) };
 
