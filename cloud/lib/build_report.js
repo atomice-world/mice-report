@@ -15,7 +15,7 @@ globalThis.miceReport = (() => {
   // 내년도 행사 예정일 (공고문·제안요청서 기준, scripts/event_dates.js가 row.event 설정)
   const evtHtml = r => r.event ? `<br><span class='evt' data-evt="${esc([r.event.start, r.event.end || '', r.event.prec || '', r.event.note || '', r.event.by || ''].join('|'))}" title="${esc(r.event.src || '')}">📅 행사 예정 ${esc(r.event.label)}</span>` : '';
   const parseEvt = r => { const m = r.match(/data-evt="([^"]*)"[^>]*>📅 행사 예정 ([^<]*)</); if (!m) return null; const [start, end, prec, note, by] = unesc(m[1]).split('|'); return { start, end: end || null, prec, note, by, label: unesc(m[2]) }; };
-  const normCo = s => String(s || '').replace(/주식회사|\(주\)|㈜|유한회사|\(유\)|협동조합|\s/g, '');
+  const normCo = s => String(s || '').replace(/주식회사|\(주\)|㈜|\(사\)|사단법인|유한회사|\(유\)|협동조합|\s|\(|\)/g, '').toLowerCase();
 
   const CSS = `body{font-family:'Malgun Gothic',Apple SD Gothic Neo,sans-serif;margin:0;background:#f4f6f9;color:#1f2733;}
 .wrap{max-width:980px;margin:0 auto;background:#fff;}
@@ -104,8 +104,8 @@ a{color:#1a56db;text-decoration:none;}
     let wins = (prev?.wins || []).filter(w => inWindow(w.openDate) && !drop.has(w.bidPbancNo));
     const have = new Set(wins.map(w => w.bidPbancNo));
     const newWins = [], otherWins = [];
-    for (const w of g2b.wins) { if (have.has(w.bidPbancNo) || w.tier === 'event') continue;
-      const isMem = mem.has(normCo(w.winner)) || /아토마이스/.test(w.winner); const row = { winner: w.winner.replace(/주식회사\s*|\(주\)|㈜/g, '').trim(), mine: /아토마이스/.test(w.winner), name: w.name, org: w.org, amount: w.amount, openDate: w.openDate, bidPbancNo: w.bidPbancNo, bidPbancOrd: w.bidPbancOrd, url: w.url, isNew: true };
+    for (const w of g2b.wins) { const isMem = w.member || mem.has(normCo(w.winner)) || /아토마이스/.test(w.winner);
+      if (have.has(w.bidPbancNo) || (w.tier === 'event' && !isMem) || (isMem && !inWindow(w.openDate))) continue; const row = { winner: w.winner.replace(/주식회사\s*|\(주\)|㈜/g, '').trim(), mine: /아토마이스/.test(w.winner), name: w.name, org: w.org, amount: w.amount, openDate: w.openDate, bidPbancNo: w.bidPbancNo, bidPbancOrd: w.bidPbancOrd, url: w.url, isNew: true };
       (isMem ? newWins : otherWins).push(row); }
     wins = [...newWins, ...(ed.extraWins || []), ...wins].sort((a, b) => (b.mine - a.mine) || (b.isNew ? 1 : 0) - (a.isNew ? 1 : 0));
     // 캘린더

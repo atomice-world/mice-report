@@ -82,7 +82,20 @@ globalThis.miceG2BApi = (() => {
     r = await pool(KWS.map(kw => async () => ({ kw, ...(await call(WIN + '/getScsbidListSttusServcPPSSrch', { inqryDiv: '2', inqryBgnDt: stamp(addDays(now, -(opts.winDays || 6))), inqryEndDt: stamp(now, true), bidNtceNm: kw })) })));
     errors.push(...r.errs);
     const wmap = new Map(); for (const res of r.out) for (const x of res?.items || []) { const k = x.bidNtceNo + '-' + x.bidNtceOrd; if (!wmap.has(k)) wmap.set(k, x); }
-    const wl = [...wmap.values()].filter(x => tierOf(x.bidNtceNm || '') !== 'event' || opts.allWins);
+    // 회원사 낙찰: 키워드와 무관하게 '등록일' 기준 전체 용역 낙찰을 훑어 회원사 낙찰을 찾는다
+    // (협상에 의한 계약은 개찰 후 1~3주 뒤에 최종낙찰자가 등록되므로 개찰일 기준 검색으로는 빠짐)
+    const normCo = s => String(s || '').replace(/주식회사|\(주\)|㈜|\(사\)|사단법인|유한회사|\(유\)|협동조합|\s|\(|\)/g, '').toLowerCase();
+    const memSet = new Set((opts.members || []).map(normCo));
+    if (memSet.size) {
+      for (const div of ['1', '2']) for (const [a, b] of windows(now, opts.memberWinDays || 18)) {
+        for (let pg = 1; pg <= 15; pg++) {
+          let res; try { res = await call(WIN + '/getScsbidListSttusServcPPSSrch', { inqryDiv: div, inqryBgnDt: stamp(a), inqryEndDt: stamp(b, true), pageNo: String(pg) }); } catch (e) { errors.push(e.message); break; }
+          for (const x of res.items) if (memSet.has(normCo(x.bidwinnrNm))) { const k = x.bidNtceNo + '-' + x.bidNtceOrd; if (!wmap.has(k)) wmap.set(k, { ...x, _member: true }); else wmap.get(k)._member = true; }
+          if (res.items.length < 999) break;
+        }
+      }
+    }
+    const wl = [...wmap.values()].filter(x => x._member || tierOf(x.bidNtceNm || '') !== 'event' || opts.allWins);
     // 금액 규칙용 공고 정보 (협상 = 배정예산·사업금액 중 큰 값)
     const info = await pool(wl.map(x => async () => (await call(BID + '/getBidPblancListInfoServc02', { inqryDiv: '2', bidNtceNo: x.bidNtceNo })).items));
     const wins = wl.map((x, i) => { const bi = (info.out[i] || []).find(b => b.bidNtceOrd === x.bidNtceOrd) || (info.out[i] || [])[0] || {};
@@ -90,7 +103,21 @@ globalThis.miceG2BApi = (() => {
       const od = kst(x.rlOpengDt); const name = String(x.bidNtceNm || '').trim();
       return { winner: x.bidwinnrNm, name, org: x.dminsttNm, amount: nego ? (alot >= biz ? `${won(alot)} (배정예산)` : `${won(biz)} (사업금액)`) : `${won(x.sucsfbidAmt)} (낙찰금액)`, bidAmt: Number(x.sucsfbidAmt) || null,
         openDate: od ? mmdd(od).slice(0, 5) : '', openISO: od?.toISOString() || null, method: String(bi.sucsfbidMthdNm || '').split('-')[0], bidPbancNo: x.bidNtceNo, bidPbancOrd: x.bidNtceOrd,
-        url: link(x.bidNtceNo, x.bidNtceOrd), tier: tierOf(name), bizno: x.bidwinnrBizno }; }).sort((a, b) => (b.openISO || '').localeCompare(a.openISO || ''));
+        url: link(x.bidNtceNo, x.bidNtceOrd), tier: tierOf(name), bizno: x.bidwinnrBizno, member: !!x._member, regDate: String(x.rgstDt || '').slice(0, 10) }; }).sort((a, b) => (b.openISO || '').localeCompare(a.openISO || ''));
+    // 회원사 낙찰 누적 캐시: 공식 API가 같은 조건에도 결과가 들쭉날쭉해, 한 번 잡힌 회원사 낙찰은 references/member_wins.json에 보관하고 매번 합친다(최근 60일)
+    if (memSet.size) {
+      const CF = SKILL + '\\references\\member_wins.json'; let cache = [];
+      try { cache = JSON.parse(await fs.readFile(CF, 'utf8')); } catch (e) {}
+      const byK = new Map(cache.map(w => [w.bidPbancNo + '-' + w.bidPbancOrd, w]));
+      for (const w of wins) if (w.member) byK.set(w.bidPbancNo + '-' + w.bidPbancOrd, { ...w, cachedAt: byK.get(w.bidPbancNo + '-' + w.bidPbancOrd)?.cachedAt || now.toISOString() });
+      const cut = addDays(now, -60).toISOString();
+      cache = [...byK.values()].filter(w => !w.openISO || w.openISO >= cut);
+      try { await fs.writeFile(CF, JSON.stringify(cache, null, 1)); } catch (e) {}
+      const have = new Set(wins.map(w => w.bidPbancNo + '-' + w.bidPbancOrd));
+      for (const w of cache) if (!have.has(w.bidPbancNo + '-' + w.bidPbancOrd)) wins.push({ ...w, member: true, fromCache: true });
+      wins.sort((p, q) => (q.openISO || '').localeCompare(p.openISO || ''));
+      stats.memberWins = wins.filter(w => w.member).length;
+    }
     Object.assign(stats, { bids: bids.length, prespecs: prespecs.length, wins: wins.length, apiCalls: CALLS, errors: [...new Set(errors)].slice(0, 5) });
     return { generatedAt: now.toISOString(), source: 'data.go.kr', bids, prespecs, wins, stats };
   }
