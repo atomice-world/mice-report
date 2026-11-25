@@ -9,10 +9,11 @@ globalThis.miceG2BApi = (() => {
   const BID = 'https://apis.data.go.kr/1230000/ad/BidPublicInfoService02';
   const SPEC = 'https://apis.data.go.kr/1230000/ao/HrcspSsstndrdInfoService';
   const WIN = 'https://apis.data.go.kr/1230000/as/ScsbidInfoService';
-  const KWS = ['포럼','컨퍼런스','콘퍼런스','세미나','심포지엄','학술대회','국제회의','박람회','설명회','상담회','총회','워크숍','워크샵','컨벤션','엑스포','성과보고회','학회','국제행사','행사 대행','행사대행','행사 운영','행사운영'];
-  const CORE_KW = ['포럼','컨퍼런스','콘퍼런스','세미나','심포지엄','학술대회','국제회의','학회','총회','상담회','설명회','성과보고회','성과공유회','컨벤션','엑스포','박람회','워크숍','워크샵','국제행사'];
+  const KWS = ['포럼','컨퍼런스','콘퍼런스','세미나','심포지엄','학술대회','국제회의','박람회','설명회','상담회','총회','워크숍','워크샵','컨벤션','엑스포','성과보고회','학회','국제행사','행사 대행','행사대행','행사 운영','행사운영','성과공유회','공유회','교류회','성과교류회','페어','위크','로드쇼','네트워킹','서밋','의 날','데이 운영','데이 행사','Day','투자설명회','라운드테이블','팸투어','초청 행사','학술행사'];
+  const CORE_KW = ['포럼','컨퍼런스','콘퍼런스','세미나','심포지엄','학술대회','국제회의','학회','총회','상담회','설명회','성과보고회','성과공유회','컨벤션','엑스포','박람회','워크숍','워크샵','국제행사','공유회','교류회','페어','위크','로드쇼','네트워킹','서밋','의 날','Day','DAY','투자설명회','라운드테이블','팸투어','학술행사','데이'];
   const BORDER = ['축제','페스티벌','페스타','졸업식','입학식','학위수여식','시상식','기념식','신년인사회','입학박람회','채용박람회','채용 박람회','취업박람회','잡 페어','잡페어','직무박람회','일자리','교육과정','연수','훈련','설치','제작','임대','임차','시스템','플랫폼','웹사이트','유지보수','구축','측량','공사','설계','타당성','기본계획','영상','홍보물','홍보관','전시관','기념품','캠프','경진대회','해커톤','공연','조성','콘텐츠','신입직원','참관','장터','마켓','부스'];
-  const tierOf = name => !CORE_KW.some(w => name.includes(w)) ? 'event' : (BORDER.some(w => name.includes(w)) ? 'border' : 'core');
+  const hasKw = (name, w) => w === '데이' ? /데이(?!터)/.test(name) : name.includes(w);
+  const tierOf = name => !CORE_KW.some(w => hasKw(name, w)) ? 'event' : (BORDER.some(w => name.includes(w)) ? 'border' : 'core');
   const won = n => (n === null || n === undefined || n === '' || isNaN(Number(n)) || Number(n) === 0) ? '' : Number(n).toLocaleString('ko-KR') + '원';
   const kst = s => { const m = String(s || '').match(/(\d{4})-(\d\d)-(\d\d) (\d\d):(\d\d)/); return m ? new Date(`${m[1]}-${m[2]}-${m[3]}T${m[4]}:${m[5]}:00+09:00`) : null; };
   const mmdd = d => { if (!d) return ''; const k = new Date(d.getTime() + 9 * 3600e3).toISOString(); return `${k.slice(5, 7)}-${k.slice(8, 10)} ${k.slice(11, 16)}`; };
@@ -46,7 +47,7 @@ globalThis.miceG2BApi = (() => {
     const maxPrice = opts.maxPrice || 300000000, maxBudget = Math.round(maxPrice * 1.1);
     const stats = {}; const errors = [];
     // ---------- 입찰공고 (용역) ----------
-    const tasks = []; for (const kw of KWS) for (const [a, b] of windows(now, opts.bidDays || 56))
+    const tasks = []; for (const kw of KWS) for (const [a, b] of windows(now, opts.bidDays || 36))
       tasks.push(async () => ({ kw, ...(await call(BID + '/getBidPblancListInfoServcPPSSrch02', { inqryDiv: '1', inqryBgnDt: stamp(a), inqryEndDt: stamp(b, true), bidNtceNm: kw })) }));
     let r = await pool(tasks); errors.push(...r.errs);
     const map = new Map();
@@ -121,5 +122,5 @@ globalThis.miceG2BApi = (() => {
     Object.assign(stats, { bids: bids.length, prespecs: prespecs.length, wins: wins.length, apiCalls: CALLS, errors: [...new Set(errors)].slice(0, 5) });
     return { generatedAt: now.toISOString(), source: 'data.go.kr', bids, prespecs, wins, stats };
   }
-  return { collect, KWS, CORE_KW, BORDER };
+  return { collect, KWS, CORE_KW, BORDER, tierOf };
 })();
