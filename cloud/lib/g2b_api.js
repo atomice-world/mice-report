@@ -36,7 +36,7 @@ globalThis.miceG2BApi = (() => {
       } catch (e) { if (t === 2 || /^(07|10|12|20|22|30|31|32)\b/.test(e.message)) throw e; await sleep(800); }
     }
   }
-  async function pool(tasks, conc = 6) { const out = new Array(tasks.length); let i = 0; const errs = [];
+  async function pool(tasks, conc = 10) { const out = new Array(tasks.length); let i = 0; const errs = [];
     await Promise.all(Array.from({ length: conc }, async () => { while (i < tasks.length) { const k = i++; try { out[k] = await tasks[k](); } catch (e) { errs.push(e.message); out[k] = null; } } }));
     return { out, errs }; }
   // 조회기간 제한(2026-11-11부터 7일 초과 시 07 에러) → 6일 구간 분할
